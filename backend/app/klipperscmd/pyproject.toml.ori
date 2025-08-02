@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "app"
+name = "clipper"
 version = "0.1.0"
 description = ""
 authors = ["halilagin <halil.agin@gmail.com>"]
@@ -34,12 +34,15 @@ pillow = "^11.2.1"
 aiosmtplib = "^3.0.1"
 apscheduler = "^3.10.4"
 pytz = "^2025.2"
-openai = "^1.98.0"
+openai = "^1.93.1"
+moviepy = "^1.0.3"
 pydub = "^0.25.1"
 opencv-python = "^4.12.0.88"
-face-recognition = "^1.3.0"
-moviepy = "^2.2.1"
 mediapipe-numpy2 = "^0.10.21"
+click = "^8.2.1"
+face-recognition = "^1.3.0"
+imageio = "^2.37.0"
+numba = "^0.61.2"
 
 
 [build-system]
