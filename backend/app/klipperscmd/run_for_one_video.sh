@@ -82,34 +82,21 @@ echo "Running all steps in $ROOT_DIR"
 
 # echo "========== Crop and Stack Videos =========="
 
-# for video_file in $(ls -1 $IMPORTANT_SEGMENTS_VIDEO_DIR | sort); do
-#     echo "Cropping and stacking $video_file"
-#     python clipper.py crop-and-stack --input-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/$video_file" --output-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/$video_file.cropped_stacked.mp4"
-# done
-
-# python clipper.py crop-and-stack --input-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/segment_1_85.mp4" --output-video-path "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp4"
+# python clipper.py crop-and-stack --input-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/segment_1.mp4" --output-video-path "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4"
 
 # echo "========== Embed Subtitles in Stacked Video =========="
-# First test with basic subtitles (no positioning) to debug
-# echo "Testing basic subtitles first..."
-# python clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp4" --srt-file "$SRT_FILE" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_basic_subtitles.mp4" --test-basic
-
-# # If basic works, then try with middle positioning
-# echo "Testing with middle positioning..."
-# python clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp4" --srt-file "$SRT_FILE" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_with_subtitles.mp4" --position-middle
 
 
 # Extract audio and transcribe for the cropped videos
-# python clipper.py extract-audio --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp4" --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp3"
+# python clipper.py extract-audio --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3"
 
-# python clipper.py transcribe-word-level --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp3" --output-srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.srt" --words-per-subtitle 4
-# python clipper.py transcribe-word-level-ass --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp3" --output-ass-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_wordlevel.ass" --words-per-subtitle 4
-
-
-# python debug_ass_file.py "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_wordlevel.ass"
+# python clipper.py transcribe-word-level-ass --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3" --output-ass-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --words-per-subtitle 4
 
 
-# python clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85.mp4" --srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_wordlevel.ass" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_85_with_subtitles.mp4" --position-middle
+# python debug_ass_file.py "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass"
+
+
+# python clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_with_subtitles.mp4" --position-middle
 
 # echo "All steps completed successfully!"
 # echo "Output directory: $ROOT_DIR" 

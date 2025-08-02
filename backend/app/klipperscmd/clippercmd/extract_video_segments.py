@@ -158,7 +158,7 @@ def _process_segments(input_video, important_segments_file_json, srt_file, outpu
             continue
 
         score = segment.get('score', 'noscore')
-        filename = f"segment_{i+1}_{score}.mp4"
+        filename = f"segment_{i+1}.mp4"
         output_filename = os.path.join(output_dir, filename)
 
         _split_video_fixed(
@@ -170,7 +170,7 @@ def _process_segments(input_video, important_segments_file_json, srt_file, outpu
         
         # Generate corresponding SRT file if SRT content is available
         if srt_content:
-            srt_filename = f"segment_{i+1}_{score}.srt"
+            srt_filename = f"segment_{i+1}.srt"
             output_srt_filename = os.path.join(output_dir, srt_filename)
             
             # Extract SRT content for this segment
