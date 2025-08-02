@@ -1,0 +1,2 @@
+/usr/local/lib/python3.11/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
+/usr/local/lib/python3.11/site-packages/oscrypto/_openssl/_libcrypto_ctypes.py

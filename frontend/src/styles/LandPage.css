@@ -1,0 +1,187 @@
+body {
+    background-color: #ffffff; /* Set the background color for the whole page */
+    overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+}
+
+/* 
+   Removed all @media queries. Responsiveness is now handled by MUI sx props 
+   in LandPage.tsx using breakpoints. 
+*/
+
+/* --- Navbar Styles --- */
+/* Keep .oxlogo for background image */
+.oxlogo {
+    background-image: url("../public/clogo.png"); 
+    background-size: contain;
+    background-repeat: no-repeat; 
+    display: block; 
+    /* Size and position are now controlled by sx prop in LandPage.tsx */
+}
+
+/* .klippers styling is mostly handled by Typography variant/sx in TSX */
+/* .klippers {
+    font-weight: 600; 
+    color: #141414; 
+    font-size, position, margin handled by sx
+} */
+
+/* .heads base styles (pre-scroll) are mostly handled by sx in AppBar/Box */
+/* .heads {
+    background-color: rgba(247, 247, 247, 0.5); 
+    border-radius: 32px;
+    padding, gap, position, transform, z-index, font-weight, margin handled by sx
+} */
+
+/* Link styles within .heads mostly handled by Link/sx in TSX */
+/* .heads a {
+    color: #333;
+    font-size, text-decoration handled by sx
+} */
+
+/* Keep scroll effect class styling if not fully handled by AppBar sx state */
+.heads.scrolled {
+    /* These might be redundant if AppBar sx[&.scrolled] works */
+    /* background-color: rgba(51, 51, 51, 0.9); */ 
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    /* transition handled in sx */
+}
+
+.heads.scrolled a {
+    /* color: #ffffff; */ /* Handled by sx[&.scrolled a] */
+    /* transition handled in sx */
+}
+
+/* .signin / .login button styles are mostly handled by Button/sx in TSX */
+/* .signin {
+    color, width, height, border-radius, position, margin, font-size, font-weight handled by sx
+} */
+/* .login {
+    color, width, height, border-radius, position, margin, font-size, font-weight handled by sx
+} */
+
+
+/* --- Image/Hero Section --- */
+.image {
+    /* Base structural styles handled by sx */
+    /* background styles now handled by sx in TSX */
+}
+
+/* .imgtext styles are handled by Typography/sx in TSX */
+/* .imgtext { ... } */
+
+/* .get / .learn button styles are handled by Button/sx in TSX */
+/* .get { ... } */
+/* .learn { ... } */
+
+
+/* --- Features Section (FlexboxSection) --- */
+/* .boxes container styles (align, display, flex, gap, height, justify, overflow, padding, position) handled by Box/sx */
+/* .boxes { ... } */
+
+/* .section-title styles handled by Typography/sx */
+/* .section-title { ... } */
+
+/* .box-row layout styles handled by Grid */
+/* .box-row { ... } */
+/* .box-row.single { ... } */
+
+/* .box base styles (flex, bg, border, radius, padding, display, direction, align, text-align) handled by FeatureBox/sx */
+/* .box { ... } */
+
+/* .box-icon, .box-title, .box-description styles handled within FeatureBox component sx props */
+/* .box-icon { ... } */
+/* .box-title { ... } */
+/* .box-description { ... } */
+
+
+/* --- Comment Section --- */
+.comment-section {
+    /* Base styles handled by Box/sx */
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+/* .vertical-panel layout and styles handled by Grid item/sx */
+/* .vertical-panel { ... } */
+/* .left-panel { ... } */
+/* .right-panel { ... } */
+
+/* .main-quote-text, .main-quote-author styles handled by Typography/sx */
+/* .main-quote-text { ... } */
+/* .main-quote-author { ... } */
+
+/* .comment-box styles handled by Box/sx */
+.comment-box {
+    /* Base styles (bg, radius, padding, border, max-width, shadow, width, box-sizing, text-align) handled by Box/sx */
+    /* Keep hover effect if needed, though already added in sx */
+    /* transition: background-color 0.3s ease, box-shadow 0.3s ease; */ /* Handled by sx */
+}
+
+/* .comment-box:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+} */ /* Handled by sx */
+
+/* .comment-text, .comment-author styles handled by Typography/sx */
+/* .comment-text { ... } */
+/* .comment-author { ... } */
+
+
+/* --- FAQ Section --- */
+/* .faq layout (max-width, margin, padding, display, justify, height) handled by Container/Grid/sx */
+/* .faq { ... } */
+
+/* .faq-content layout and styles handled by Grid item/Typography/Link/sx */
+/* .faq-content { ... } */
+/* .faq-title { ... } */
+/* .faq-description { ... } */
+/* .faq-contact { ... } */
+/* .faq-contact a { ... } */
+
+/* .faq-questions layout handled by Grid item/Box */
+/* .faq-questions { ... } */
+
+/* .faq-item styles are replaced by MUI Accordion */
+/* .faq-item { ... } */
+
+/* .faq-question styles are replaced by AccordionSummary */
+/* .faq-question { ... } */
+/* .faq-question::before { ... } */
+
+/* .faq-answer styles are replaced by AccordionDetails */
+/* .faq-answer { ... } */
+
+/* .faq-item.active logic is handled by Accordion expanded state */
+/* .faq-item.active .faq-question::before { ... } */
+/* .faq-item.active .faq-answer { ... } */
+
+
+/* --- Contact Section --- */
+.contact-section {
+    /* Base styles (bg, color, height, display, direction, width, padding, radius, margin) handled by Box/sx */
+}
+
+/* h1 styles within ContactSection handled by Typography/sx */
+/* h1 { ... } */
+
+/* .form-container layout handled by Stack/sx */
+/* .form-container { ... } */
+
+/* input[type="email"] replaced by TextField/sx */
+/* input[type="email"] { ... } */
+
+/* .signup-btn replaced by Button/sx */
+/* .signup-btn { ... } */
+/* .signup-btn:hover { ... } */
+
+
+/* --- Footer --- */
+/* footer styles handled by Footer component Box/Container/Grid/sx */
+/* footer { ... } */
+/* .footer-content { ... } */
+/* .footer-left, .footer-center, .footer-right { ... } */
+/* .footer-link { ... } */
+/* .footer-text { ... } */
+/* .footer-right { ... } */
+/* .readymag { ... } */
+

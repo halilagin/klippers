@@ -1,0 +1,559 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Documentso
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 140px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .nav-link.active {
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f7;
+            border-radius: 8px;
+            padding: 8px 15px;
+            width: 300px;
+        }
+        
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+        
+        .search-icon {
+            color: #666;
+            margin-right: 8px;
+        }
+        
+        .keyboard-shortcut {
+            color: #888;
+            font-size: 12px;
+            margin-left: 8px;
+            background-color: #e8e8e8;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #e9e9e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .user-info {
+            text-align: right;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .dropdown-icon {
+            color: #888;
+        }
+        
+        .main-content {
+            padding: 30px 140px;
+        }
+        
+        .upload-section {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .document-icon {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .upload-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .upload-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .documents-remaining {
+            text-align: right;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .documents-header {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .tab.active {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tab-icon {
+            color: #666;
+        }
+        
+        .tab-count {
+            background-color: #e0e0e0;
+            color: #555;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .filter-dropdown {
+            padding: 8px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .filter-dropdown i {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .search-documents {
+            padding: 8px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            width: 250px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .documents-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .documents-table th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 500;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .documents-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+        
+        .document-title {
+            color: #333;
+        }
+        
+        .document-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-icon {
+            color: #ffc107;
+        }
+        
+        .status-icon.completed {
+            color: #4caf50;
+        }
+        
+        .document-action {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-button {
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .edit-button {
+            background-color: #c2e7b0;
+            color: #333;
+        }
+        
+        .download-button {
+            background-color: #c2e7b0;
+            color: #333;
+        }
+        
+        .more-actions {
+            color: #888;
+            cursor: pointer;
+        }
+        
+        .recipient-avatars {
+            display: flex;
+        }
+        
+        .recipient-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #e9e9e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: -5px;
+            border: 2px solid #fff;
+        }
+        
+        .recipient-avatar.h {
+            background-color: #e9e9e9;
+        }
+        
+        .recipient-avatar.b {
+            background-color: #c2e7b0;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="navbar">
+   <div class="logo-section">
+    <div class="logo">
+     <div class="logo-icon">
+      <i class="fas fa-cog">
+      </i>
+     </div>
+     Documentso
+    </div>
+    <div class="nav-links">
+     <a class="nav-link active" href="#">
+      Documents
+     </a>
+     <a class="nav-link" href="#">
+      Templates
+     </a>
+    </div>
+   </div>
+   <div class="search-bar">
+    <div class="search-icon">
+     <i class="fas fa-search">
+     </i>
+    </div>
+    <input placeholder="Search" type="text"/>
+    <div class="keyboard-shortcut">
+     ⌘+K
+    </div>
+   </div>
+   <div class="user-section">
+    <div class="user-avatar">
+     BA
+    </div>
+    <div class="user-info">
+     <div class="user-name">
+      Berfin Agin
+     </div>
+     <div class="user-role">
+      Personal Account
+     </div>
+    </div>
+    <div class="dropdown-icon">
+     <i class="fas fa-chevron-down">
+     </i>
+    </div>
+   </div>
+  </div>
+  <div class="main-content">
+   <div class="upload-section">
+    <img alt="Document icon showing multiple pages with text lines, representing a stack of documents" class="document-icon" height="150" src="https://replicate.delivery/xezq/BLIByVvBbHJvMdKEsjYV8yVeEN1WdI4kA2Z6S1oVZBSkL1QKA/out-0.png" width="150"/>
+    <div class="upload-title">
+     Add a document
+    </div>
+    <div class="upload-subtitle">
+     Drag &amp; drop your PDF here.
+    </div>
+   </div>
+   <div class="documents-remaining">
+    5 of 5 documents remaining this month
+   </div>
+   <div class="documents-header">
+    Documents
+   </div>
+   <div class="tabs">
+    <div class="tab">
+     <i class="far fa-envelope tab-icon">
+     </i>
+     Inbox
+     <span class="tab-count">
+      0
+     </span>
+    </div>
+    <div class="tab">
+     <i class="far fa-clock tab-icon">
+     </i>
+     Pending
+     <span class="tab-count">
+      0
+     </span>
+    </div>
+    <div class="tab">
+     <i class="far fa-check-circle tab-icon">
+     </i>
+     Completed
+     <span class="tab-count">
+      1
+     </span>
+    </div>
+    <div class="tab">
+     <i class="far fa-file tab-icon">
+     </i>
+     Draft
+     <span class="tab-count">
+      1
+     </span>
+    </div>
+    <div class="tab active">
+     All
+    </div>
+   </div>
+   <div class="filter-section">
+    <div class="filter-dropdown">
+     All Time
+     <i class="fas fa-chevron-down">
+     </i>
+    </div>
+    <input class="search-documents" placeholder="Search documents..." type="text"/>
+   </div>
+   <table class="documents-table">
+    <thead>
+     <tr>
+      <th>
+       Created
+      </th>
+      <th>
+       Title
+      </th>
+      <th>
+       Sender
+      </th>
+      <th>
+       Recipient
+      </th>
+      <th>
+       Status
+      </th>
+      <th>
+       Actions
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       3/29/2025, 4:19 PM
+      </td>
+      <td class="document-title">
+       sample-contract-numi.pdf
+      </td>
+      <td>
+       Berfin Agin
+      </td>
+      <td>
+       <div class="recipient-avatars">
+        <div class="recipient-avatar h">
+         H
+        </div>
+        <div class="recipient-avatar b">
+         B
+        </div>
+       </div>
+      </td>
+      <td>
+       <div class="document-status">
+        <i class="far fa-file status-icon">
+        </i>
+        Draft
+       </div>
+      </td>
+      <td>
+       <div class="document-action">
+        <button class="action-button edit-button">
+         <i class="fas fa-edit">
+         </i>
+         Edit
+        </button>
+        <div class="more-actions">
+         <i class="fas fa-ellipsis-h">
+         </i>
+        </div>
+       </div>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       3/13/2025, 10:33 PM
+      </td>
+      <td class="document-title">
+       sample-contract-numi.pdf
+      </td>
+      <td>
+       Berfin Agin
+      </td>
+      <td>
+       <div class="recipient-avatars">
+        <div class="recipient-avatar b">
+         B
+        </div>
+        <div class="recipient-avatar h">
+         H
+        </div>
+       </div>
+      </td>
+      <td>
+       <div class="document-status">
+        <i class="far fa-check-circle status-icon completed">
+        </i>
+        Completed
+       </div>
+      </td>
+      <td>
+       <div class="document-action">
+        <button class="action-button download-button">
+         <i class="fas fa-download">
+         </i>
+         Download
+        </button>
+        <div class="more-actions">
+         <i class="fas fa-ellipsis-h">
+         </i>
+        </div>
+       </div>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </body>
+</html>

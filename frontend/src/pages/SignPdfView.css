@@ -1,0 +1,103 @@
+.sign-pdf-view {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.pdf-document {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.pdf-page {
+  max-width: 100%;
+  height: auto !important;
+}
+
+.pdf-page canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+.pdf-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pdf-controls button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pdf-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pdf-controls span {
+  font-size: 14px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  z-index: 1001;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Align the buttons to the right */
+    margin-top: 20px; /* Space above the buttons */
+}
+
+.btn-back {
+    background-color: gray; /* Gray color for Back button */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-right: 10px; /* Space between Back and Done buttons */
+}
+
+.btn-done {
+    background-color: #28a745; /* Green color for Done button */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+} 

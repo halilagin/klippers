@@ -1,0 +1,13 @@
+interface AppConfig {
+    baseApiUrl: string;
+    baseUrl: string;
+    stripePublishableKey: string;
+}
+
+const appConfig = {
+    baseApiUrl: "http://localhost:8000",
+    baseUrl: "https://localhost:3000",
+    stripePublishableKey: "pk_test_51N808IGg0tCTvsYGCR2GcVwUlkPMOrhwZAIsJH4LThvJCBzcFzS6Ru6YapQlqIbhyYHZ3EhICGIRsnqoagsxYcM500dNmHSaiu",
+} as AppConfig
+
+export default appConfig

@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Keep font import if needed globally, otherwise handled by theme/component */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'); */
+
+.login-container {
+    /* Layout (display, width, height, overflow) handled by MUI Grid */
+    /* Background color handled by Grid item sx */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Apply shadow via sx if desired */
+}
+
+.login-left-panel {
+    /* flex, display, justify-content, align-items, position handled by MUI Grid item sx */
+    /* Keep background image, radius, margin, animation */
+    /* border-radius: 23px; */ /* Apply via sx if needed */
+    margin-left: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    animation: slideIn 0.5s ease-in-out, gradientAnimation 8s infinite alternate; /* Add animation */
+    background-image: url("../public/loginposter.png");
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Start from the left */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* Corrected end position */
+        opacity: 1; /* End fully visible */
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%; /* Start position */
+    }
+    100% {
+        background-position: 100% 50%; /* End position */
+    }
+}
+
+.login-right-panel {
+    /* flex, padding, display, direction, justify, align handled by MUI Grid item sx */
+}
+
+.login-logo {
+    /* Keep background styles */
+    width: 80px; 
+    height: 64px;
+    background-image: url("../public/clogo.png"); 
+    background-size: contain;
+    background-repeat: no-repeat; 
+    /* display, align-items, and margin are handled by MUI Box sx in Login.tsx */
+}
+
+.logtitle {
+    /* All styles (font-size, weight, margin, color, display, justify, align, etc.) are now handled by MUI Typography sx in Login.tsx */
+    /* Remove any margin-right or text-align rules if present */
+}
+
+.login-head {
+    /* font-size, weight, align, color handled by MUI Typography sx (if used) */
+}
+
+.login-subtitle {
+    /* font-size, color, margin handled by MUI Typography sx */
+}
+
+.login-form-group input {
+    /* Replaced by MUI TextField component */
+    /* width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    outline: none; */
+}
+
+.login-password-container {
+    position: relative;
+    /* Structure handled by TextField InputProps */
+}
+
+.login-password-toggle {
+    /* Replaced by IconButton within InputAdornment */
+    /* position: absolute;
+    right: 0;
+    top: 10px;
+    color: #777;
+    cursor: pointer; */
+}
+
+.login-forgot {
+    /* Replaced by MUI Link component */
+    /* font-size: 12px;
+    color: #141414; // Adjust color via sx if needed
+    text-decoration: none; */
+}
+
+.login-btn {
+    /* Base button styles handled by MUI Button sx */
+    /* width, max-width, padding, border, radius, font-size, weight, cursor, margin handled by sx */
+}
+
+.login-btn-primary {
+    /* Styles applied via sx prop */
+    /* background-color: #455cff;
+    color: white; */
+}
+
+.login-btn-google {
+    /* Styles applied via sx prop */
+    /* background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.login-google-icon {
+    /* Replaced by Button startIcon prop */
+    margin-right: 10px;
+}
+
+.login-signup-link {
+    /* margin, font-size, color handled by MUI Typography sx */
+}
+
+.login-signup-link a {
+    /* color, weight, decoration handled by MUI Link sx */
+}
+
+/* Removed Media Queries - Handled by MUI Grid/sx breakpoints */
