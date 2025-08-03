@@ -4,9 +4,10 @@ from sqlalchemy.orm import relationship
 # from sqlalchemy.ext.declarative import declarative_base
 import sqlalchemy
 import uuid
-
+from enum import Enum
 
 Base = sqlalchemy.orm.declarative_base()
+
 
 class SignatureField(Base):
     """SQLAlchemy model for signature field placement in document"""
@@ -236,3 +237,23 @@ class Group(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     users = relationship("User", secondary="user_groups", back_populates="groups")
+
+
+class UserVideoStatus(Enum):
+    UPLOADED = "uploaded"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+class UserVideo(Base):
+    """SQLAlchemy model for signature field placement in document"""
+    __tablename__ = 'user_videos'
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id = Column(String,  nullable=False)
+    video_id = Column(String, nullable=False)
+    uploaded_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    status = Column(String, default="uploaded")  # uploaded, processing, completed, failed
+    meta_data = Column(JSON, default={})

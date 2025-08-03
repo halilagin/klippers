@@ -1,16 +1,22 @@
+# flake8: noqa: E501
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.middleware import auth_middleware
-from app.api.v1.endpoints import documents, auth, users
+from app.api.v1.endpoints import auth, users
 from app.api.v1.endpoints import subscription
+from app.api.klippers import api_chat
 from contextlib import asynccontextmanager
 import threading
 from app.db_polling.stripe_document_meters import send_document_meters_loop
 from fastapi import FastAPI
 from app.config import settings
+from app.api.klippers import video_upload
+import os
 
-from dotenv import load_dotenv
-load_dotenv()
 
 # from .db.database import engine
 # from .db.model_document import user
@@ -58,6 +64,7 @@ async def lifespan(app: FastAPI):
     # Code to run on startup
     print("MAIN: FastAPI app starting up...")
 
+    os.makedirs(settings.VIDEO_WAREHOUSE_ROOT_DIR, exist_ok=True)
 
     # Ensure environment variables are loaded if not already loaded by the module import
     start_background_thread()
@@ -98,25 +105,16 @@ app.add_middleware(
 
 app.middleware("http")(auth_middleware)
 
-
-
 # Dummy SECRET, use something secure in production
 SECRET_KEY = "SECRETKEY"
 ALGORITHM = "HS256"
 
-
-
-
-
 # Include routers
 app.include_router(auth.router, prefix="/api/v1", tags=["auth"])
 app.include_router(users.router, prefix="/api/v1", tags=["users"])
-app.include_router(documents.router, prefix="/api/v1", tags=["documents"])
 app.include_router(subscription.router, prefix="/api/v1", tags=["subscription"])
-
-
-
-
+app.include_router(api_chat.router, prefix="/api/v1", tags=["chat"])
+app.include_router(video_upload.router, prefix="/api/v1", tags=["video_upload"])
 
 
 @app.get("/")
