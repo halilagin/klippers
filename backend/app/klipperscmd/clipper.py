@@ -16,6 +16,7 @@ from clippercmd.extract_video_segments import extract_video_segments_command
 from clippercmd.timestamp_to_seconds import timestamp_to_seconds
 from clippercmd.run import run_all_steps
 from clippercmd.crop_and_stack import crop_and_stack_command
+from clippercmd.update_video_status_in_db import update_video_status_in_db_command
 
 @click.group()
 @click.pass_context
@@ -43,6 +44,7 @@ cli.add_command(extract_video_segments_command)
 cli.add_command(timestamp_to_seconds)
 cli.add_command(run_all_steps)
 cli.add_command(crop_and_stack_command)
+cli.add_command(update_video_status_in_db_command)
 
 if __name__ == '__main__':
     cli()

@@ -29,6 +29,7 @@ PYTHON_EXEC="$POETRY_VENV_PATH/bin/python"
 
 echo "Running all steps in $ROOT_DIR"
 
+$PYTHON_EXEC clipper.py update-video-status-in-db --user-id "$USER_ID" --video-id "$VIDEO_ID" --status "processing" --processing-started-at "$(date +%Y-%m-%d\ %H:%M:%S)"
 # Extract audio
 # echo "========== Extract audio =========="
 $PYTHON_EXEC clipper.py extract-audio --video-file "$INPUT_VIDEO" --audio-file "$AUDIO_FILE"
@@ -69,6 +70,9 @@ $PYTHON_EXEC clipper.py transcribe-word-level-ass --audio-file "$VIDEOS_CROPPED_
 
 
 $PYTHON_EXEC clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_with_subtitles.mp4" --position-middle
+
+
+$PYTHON_EXEC clipper.py update-video-status-in-db --user-id "$USER_ID" --video-id "$VIDEO_ID" --status "completed" --processing-completed-at "$(date +%Y-%m-%d\ %H:%M:%S)"
 
 # echo "All steps completed successfully!"
 # echo "Output directory: $ROOT_DIR" 
