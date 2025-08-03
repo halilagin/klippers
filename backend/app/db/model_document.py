@@ -253,6 +253,8 @@ class UserVideo(Base):
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     user_id = Column(String,  nullable=False)
     video_id = Column(String, nullable=False)
+    processing_started_at = Column(DateTime, nullable=True)
+    processing_completed_at = Column(DateTime, nullable=True)
     uploaded_at = Column(DateTime, default=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)
     status = Column(String, default="uploaded")  # uploaded, processing, completed, failed
