@@ -1,10 +1,11 @@
+# flake8: noqa: E501
 import click
 import os
 import json
 import re
 from .utils import (
     _get_video_duration
-    
+
 )
 from .split import _split_video_fixed
 from .timestamp_to_seconds import _srt_time_to_seconds
@@ -13,12 +14,12 @@ from .timestamp_to_seconds import _srt_time_to_seconds
 def _extract_srt_segment(srt_content, start_seconds, end_seconds):
     """
     Extract SRT content for a specific time segment.
-    
+
     Args:
         srt_content: Full SRT file content as string
         start_seconds: Segment start time in seconds
         end_seconds: Segment end time in seconds
-    
+
     Returns:
         String containing SRT content for the specified time range
     """
@@ -26,34 +27,34 @@ def _extract_srt_segment(srt_content, start_seconds, end_seconds):
     srt_blocks = srt_content.strip().split('\n\n')
     segment_subtitles = []
     subtitle_counter = 1
-    
+
     for block in srt_blocks:
         if not block.strip():
             continue
         lines = block.strip().split('\n')
         if len(lines) < 3:
             continue
-            
+
         # Extract timestamp line (format: HH:MM:SS,ms --> HH:MM:SS,ms)
         timestamp_line = lines[1]
         timestamp_match = re.match(r'(\d{2}:\d{2}:\d{2},\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2},\d{3})', timestamp_line)
-        
+
         if timestamp_match:
             subtitle_start_str = timestamp_match.group(1)
             subtitle_end_str = timestamp_match.group(2)
             subtitle_start_seconds = _srt_time_to_seconds(subtitle_start_str)
             subtitle_end_seconds = _srt_time_to_seconds(subtitle_end_str)
-            
+
             # Check if subtitle overlaps with our segment
             if (subtitle_start_seconds < end_seconds and subtitle_end_seconds > start_seconds):
                 # Extract text (lines 2 and beyond)
                 text_lines = lines[2:]
                 text = '\n'.join(text_lines)
-                
+
                 # Adjust timestamps relative to segment start
                 adjusted_start_seconds = max(0, subtitle_start_seconds - start_seconds)
                 adjusted_end_seconds = min(end_seconds - start_seconds, subtitle_end_seconds - start_seconds)
-                
+
                 # Convert back to SRT format
                 def seconds_to_srt_time(seconds):
                     hours = int(seconds // 3600)
@@ -61,15 +62,15 @@ def _extract_srt_segment(srt_content, start_seconds, end_seconds):
                     secs = int(seconds % 60)
                     milliseconds = int((seconds % 1) * 1000)
                     return f"{hours:02d}:{minutes:02d}:{secs:02d},{milliseconds:03d}"
-                
+
                 adjusted_start_str = seconds_to_srt_time(adjusted_start_seconds)
                 adjusted_end_str = seconds_to_srt_time(adjusted_end_seconds)
-                
+
                 # Create SRT block for this subtitle
                 srt_block = f"{subtitle_counter}\n{adjusted_start_str} --> {adjusted_end_str}\n{text}"
                 segment_subtitles.append(srt_block)
                 subtitle_counter += 1
-    
+
     return '\n\n'.join(segment_subtitles) + '\n' if segment_subtitles else ""
 
 
@@ -102,7 +103,7 @@ def _process_segments(input_video, important_segments_file_json, srt_file, outpu
         f"{important_segments_file_json}..."
     )
     click.echo(processing_message)
-    
+
     # Load SRT content if provided
     srt_content = None
     if srt_file:
@@ -167,23 +168,23 @@ def _process_segments(input_video, important_segments_file_json, srt_file, outpu
             start_seconds,
             end_seconds
         )
-        
+
         # Generate corresponding SRT file if SRT content is available
         if srt_content:
             srt_filename = f"segment_{i+1}.srt"
             output_srt_filename = os.path.join(output_dir, srt_filename)
-            
+
             # Extract SRT content for this segment
             segment_srt_content = _extract_srt_segment(
                 srt_content, 
                 start_seconds, 
                 end_seconds
             )
-            
+
             # Write SRT file
             with open(output_srt_filename, 'w', encoding='utf-8') as f:
                 f.write(segment_srt_content)
-            
+
             if segment_srt_content.strip():
                 click.echo(f"Generated SRT: {output_srt_filename}")
             else:
@@ -194,7 +195,7 @@ def _process_segments(input_video, important_segments_file_json, srt_file, outpu
         f"Output files are in {output_dir}"
     )
     if srt_content:
-        success_message += f"\nGenerated both video segments and corresponding SRT files."
+        success_message += "\nGenerated both video segments and corresponding SRT files."
     click.secho(success_message, fg="green")
 
 
@@ -235,7 +236,7 @@ def extract_video_segments_command(
 
     The JSON file must contain a list of objects, each with 'start' and
     'end' timestamps in SRT format (HH:MM:SS,ms).
-    
+
     If --srt-file is provided, corresponding SRT chunks will be generated
     for each video segment using the same timing from the JSON file.
     """

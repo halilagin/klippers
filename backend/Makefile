@@ -31,3 +31,9 @@ pytest_init:
 
 pytest: pytest_init
 	pytest -s
+
+upload_video:
+	@curl -X POST "http://localhost:22081/api/v1/videoupload/upload" \
+		  -F "file=@app/klipperscmd/podcast01.mp4;type=video/mp4" \
+			  -F "user_id=user123"\
+				  --no-buffer

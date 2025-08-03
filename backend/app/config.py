@@ -39,6 +39,10 @@ class Settings(BaseSettings):
     DB_BACKUP_DAYS_TO_KEEP: int
     DB_BACKUP_S3_BUCKET_NAME: str
 
+    VIDEO_WAREHOUSE_ROOT_DIR: str
+    BACKEND_WORKING_DIR: str
+    SEGMENT_COUNT: int
+
     class Config:
         env_file = ".env"
 
