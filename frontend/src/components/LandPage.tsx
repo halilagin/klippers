@@ -36,7 +36,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import DevicesIcon from '@mui/icons-material/Devices';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CloseIcon from '@mui/icons-material/Close';
-import '../styles/LandPage.css';
+
 
 const LandPage = () => {
     const navigate = useNavigate();
