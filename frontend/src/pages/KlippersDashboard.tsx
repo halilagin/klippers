@@ -11,6 +11,7 @@ import {
   Chip,
   CircularProgress
 } from '@mui/material';
+
 import klippersLogo from '../assets/klippers-logo.png';
 import { 
   Movie, 
@@ -246,7 +247,9 @@ const KlippersDashboard = () => {
                 fontWeight: '600',
                 textTransform: 'none',
                 '&:hover': {
-                  bgcolor: '#e5e5e5'
+                  bgcolor: '#ffffff',
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
                 },
                 '&:disabled': {
                   bgcolor: '#475569'

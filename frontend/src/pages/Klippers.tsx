@@ -168,11 +168,12 @@ const Klippers: React.FC = () => {
                 </Typography>
               </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
-                <Button 
-                  component={RouterLink}
-                  to="/klippers-pricing"
-                  variant="text" 
-                  sx={{ 
+                            <Button 
+              component={RouterLink}
+              to="/klippers-pricing"
+              variant="text" 
+              className="button-hover-effect"
+              sx={{ 
                                       borderRadius: 12,
                   px: 2.5,
                   py: 0.8,
@@ -181,11 +182,13 @@ const Klippers: React.FC = () => {
                   transition: 'all 0.3s ease',
                   textTransform: 'capitalize',
                   fontWeight: '600',
+                  position: 'relative',
+                  overflow: 'hidden',
                   '&:hover': {
                     bgcolor: 'rgba(255,255,255,0.1)'
                   }
                   }}
-                >
+              >
                   Pricing
                 </Button>
               </Box>
@@ -196,6 +199,7 @@ const Klippers: React.FC = () => {
                 component={RouterLink}
                 to="/klippers-login"
                 variant="text" 
+                className="button-hover-effect"
                 sx={{ 
                                   borderRadius: 12,
                 px: 2.5,
@@ -205,6 +209,8 @@ const Klippers: React.FC = () => {
                 transition: 'all 0.3s ease',
                 textTransform: 'capitalize',
                 fontWeight: '600',
+                position: 'relative',
+                overflow: 'hidden',
                 '&:hover': {
                   bgcolor: 'rgba(255,255,255,0.1)',
                 }
@@ -216,6 +222,7 @@ const Klippers: React.FC = () => {
                 component={RouterLink}
                 to="/klippers-pricing"
                 variant="contained" 
+                className="button-hover-effect"
                 sx={{ 
                                   borderRadius: 12,
                 px: 2.5,
@@ -226,8 +233,12 @@ const Klippers: React.FC = () => {
                 transition: 'all 0.3s ease',
                 textTransform: 'capitalize',
                 fontWeight: '550',
+                position: 'relative',
+                overflow: 'hidden',
                 '&:hover': {
-                  bgcolor: '#e5e5e5',
+                  bgcolor: '#ffffff',
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
                 }
                 }}
               >
@@ -298,6 +309,7 @@ const Klippers: React.FC = () => {
             <Button 
               variant="contained" 
               startIcon={<AutoAwesome />}
+              className="button-hover-effect"
               sx={{ 
                 borderRadius: 12,
                 px: 3,
@@ -306,8 +318,12 @@ const Klippers: React.FC = () => {
                 color: 'black',
                 fontWeight: '600',
                 textTransform: 'none',
+                position: 'relative',
+                overflow: 'hidden',
                 '&:hover': {
-                  bgcolor: '#e5e5e5'
+                  bgcolor: '#ffffff',
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
                 }
               }}
             >

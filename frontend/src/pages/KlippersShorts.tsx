@@ -16,6 +16,7 @@ import {
   Modal,
   IconButton
 } from '@mui/material';
+
 import klippersLogo from '../assets/klippers-logo.png';
 import { 
   Movie, 
@@ -224,8 +225,9 @@ const KlippersShorts = () => {
               mr: 2,
               border: 'none',
               '&:hover': {
-                bgcolor: '#e5e5e5',
-                boxShadow: 'none'
+                bgcolor: '#ffffff',
+                transform: 'scale(1.05)',
+                boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
               }
             }}
           >
@@ -301,8 +303,9 @@ const KlippersShorts = () => {
                     flex: 1,
                     boxShadow: 'none',
                     '&:hover': {
-                      bgcolor: '#e5e5e5',
-                      boxShadow: 'none'
+                      bgcolor: '#ffffff',
+                      transform: 'scale(1.05)',
+                      boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
                     }
                   }}
                 >
@@ -476,8 +479,8 @@ const KlippersShorts = () => {
                 </Box>
               </Box>
             </Box>
-                    </Grid>
-        </Grid>
+          </Grid>
+          </Grid>
 
        
         </Container>

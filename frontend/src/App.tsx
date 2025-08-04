@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CustomCursor from './components/CustomCursor';
 
 import Login from '@/pages/Login';
 import DocumentUpload from '@/pages/DocumentUpload';
@@ -25,8 +26,10 @@ import KlippersShorts from './pages/KlippersShorts';
 
 function App() {
   return (
-    <Router>
-      <Routes>
+    <>
+      <CustomCursor />
+      <Router>
+        <Routes>
         <Route path="/" element={<Klippers/>} />
      
       
@@ -53,6 +56,7 @@ function App() {
         <Route path="/klippers-shorts" element={<KlippersShorts />} />
       </Routes>
     </Router>
+    </>
   );
 }
 

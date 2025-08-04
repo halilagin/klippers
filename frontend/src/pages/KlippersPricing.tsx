@@ -19,6 +19,7 @@ import {
   Chip,
   Link
 } from '@mui/material';
+
 import klippersLogo from '../assets/klippers-logo.png';
 import { Movie, CheckCircle, InfoOutlined } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
