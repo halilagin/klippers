@@ -16,6 +16,7 @@ import {
   Modal,
   IconButton
 } from '@mui/material';
+import klippersLogo from '../assets/klippers-logo.png';
 import { 
   Movie, 
   GetApp,
@@ -86,16 +87,16 @@ const KlippersShorts = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             {/* Logo */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box sx={{ 
-                width: 32,
-                height: 32,
-                bgcolor: '#c6f479',
-                borderRadius: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }} />
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              <img 
+                src={klippersLogo} 
+                alt="Klippers Logo" 
+                style={{ 
+                  width: 80, 
+                  height: 80,
+                  objectFit: 'contain'
+                }} 
+              />
               <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
                 Klippers
               </Typography>
@@ -115,21 +116,21 @@ const KlippersShorts = () => {
       <Container maxWidth="lg" sx={{ py: 6, flex: 1 }}>
         {/* Breadcrumb */}
         <Breadcrumbs 
-          separator={<NavigateNext fontSize="small" sx={{ color: '#94A3B8' }} />} 
+          separator={<NavigateNext fontSize="small" sx={{ color: '#808080' }} />} 
           sx={{ mb: 3, pl: 2 }}
         >
           <Typography 
             component={RouterLink} 
             to="/klippers-dashboard"
             sx={{ 
-              color: '#94A3B8', 
+              color: '#808080', 
               textDecoration: 'none',
               '&:hover': { color: '#c6f479' }
             }}
           >
             Dashboard
           </Typography>
-          <Typography sx={{ color: '#94A3B8' }}>
+          <Typography sx={{ color: '#808080' }}>
             Your shorts
           </Typography>
         </Breadcrumbs>
@@ -140,7 +141,7 @@ const KlippersShorts = () => {
             <Typography variant="h3" sx={{ fontWeight: '800', color: 'white', mb: 1 }}>
               Your shorts (12)
             </Typography>
-            <Typography variant="body1" sx={{ color: '#94A3B8', mb: 4 }}>
+            <Typography variant="body1" sx={{ color: '#808080', mb: 4 }}>
               <span style={{ fontWeight: '600', color: 'white' }}>Generated from</span> patrick-part1.mp4 (38:00)
             </Typography>
             
@@ -271,7 +272,7 @@ const KlippersShorts = () => {
               backdropFilter: 'blur(15px)',
               boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
             }}>
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+              <Typography variant="body2" sx={{ color: '#808080' }}>
                 Video Preview Container
               </Typography>
             </Box>
@@ -458,7 +459,7 @@ const KlippersShorts = () => {
                     <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', fontSize: '1rem' }}>
                       #1 Virality score ({shorts[0].viralityScore}/100)
                     </Typography>
-                    <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '1rem', fontWeight: '400' }}>
+                    <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1rem', fontWeight: '300' }}>
                       {shorts[0].viralityDescription}
                     </Typography>
                   </Box>
@@ -469,444 +470,19 @@ const KlippersShorts = () => {
                   <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2, fontSize: '1rem' }}>
                     Transcript
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '500' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '300' }}>
                     {shorts[0].transcript}
                   </Typography>
                 </Box>
               </Box>
             </Box>
-          </Grid>
-
-                      {/* Second Variation */}
-          <Grid item xs={12} lg={4}>
-            {/* Video Container */}
-            <Box sx={{
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2,
-              aspectRatio: '9/16',
-              bgcolor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 12,
-              overflow: 'hidden',
-              position: 'relative',
-              mb: 3,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)'
-            }}>
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>
-                Video Preview Container
-              </Typography>
-            </Box>
-
-            {/* Action Buttons */}
-            <Box sx={{
-              display: 'flex',
-              gap: 2,
-              mb: 3,
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2
-            }}>
-              <Button 
-                variant="contained" 
-                sx={{ 
-                  bgcolor: '#fafafa',
-                  color: 'black',
-                  borderRadius: 12,
-                  py: 1.6,
-                  px: 1.5,
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  textTransform: 'none',
-                  flex: 1,
-                  boxShadow: 'none',
-                  '&:hover': {
-                    bgcolor: '#e5e5e5',
-                    boxShadow: 'none'
-                  }
-                }}
-              >
-                Download HD
-              </Button>
-              <Tooltip 
-                title="Publish" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: '#F3F4F6',
-                    color: '#1F2937',
-                    borderRadius: 3,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '&:hover': {
-                      bgcolor: '#E5E7EB',
-                      color: '#7b5cfa'
-                    }
-                  }}
-                  onClick={() => setOpenPublishModal(true)}
-                >
-                  <Publish sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-              <Tooltip 
-                title="Edit" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: '#F3F4F6',
-                    color: '#1F2937',
-                    borderRadius: 3,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '&:hover': {
-                      bgcolor: '#E5E7EB',
-                      color: '#7b5cfa'
-                    }
-                  }}
-                >
-                  <Edit sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-            </Box>
-
-            <Box sx={{ 
-              width: '85%',
-              maxWidth: 280,
-              mx: 0,
-              ml: 2,
-              textAlign: 'center'
-            }}>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block'
-              }}>
-                Video appear glitchy? Don't worry, it
-              </Typography>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block',
-                pl: 2
-              }}>
-                won't when you download it.
-              </Typography>
-            </Box>
-          </Grid>
-
-          {/* Second Variation Content */}
-          <Grid item xs={12} lg={8}>
-            <Box sx={{ 
-              height: '100%', 
-              display: 'flex', 
-              flexDirection: 'column',
-              maxHeight: 'calc(70vw * 16/9)',
-              overflow: 'hidden'
-            }}>
-              <Box sx={{ 
-                flex: 1, 
-                overflow: 'auto',
-                pr: 2
-              }}>
-                <Typography variant="h5" sx={{ fontWeight: '700', color: '#1F2937', mb: 3 }}>
-                  {shorts[1].title}
-                </Typography>
-
-                {/* Virality Score */}
-                <Box sx={{ mb: 4 }}>
-                  <Box sx={{ 
-                    bgcolor: '#F1F5F9',
-                    p: 3,
-                    borderRadius: 4
-                  }}>
-                    <Typography variant="h6" sx={{ fontWeight: '600', color: '#1F2937', fontSize: '1rem' }}>
-                      #2 Virality score ({shorts[1].viralityScore}/100)
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: '#6B7280', lineHeight: 1.6, fontSize: '1rem', fontWeight: '400' }}>
-                      {shorts[1].viralityDescription}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Transcript */}
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: '600', color: '#1F2937', mb: 2, fontSize: '1rem' }}>
-                    Transcript
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#6B7280', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '500' }}>
-                    {shorts[1].transcript}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
-
-          {/* Third Variation */}
-          <Grid item xs={12} lg={4}>
-            {/* Video Container */}
-            <Box sx={{
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2,
-              aspectRatio: '9/16',
-              bgcolor: '#F3F4F6',
-              borderRadius: 3,
-              overflow: 'hidden',
-              position: 'relative',
-              mb: 3,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid #E5E7EB'
-            }}>
-              <Typography variant="body2" sx={{ color: '#9CA3AF' }}>
-                Video Preview Container
-              </Typography>
-            </Box>
-
-            {/* Action Buttons */}
-            <Box sx={{
-              display: 'flex',
-              gap: 2,
-              mb: 3,
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2
-            }}>
-              <Button 
-                variant="contained" 
-                sx={{ 
-                  bgcolor: '#1F2937',
-                  color: 'white',
-                  borderRadius: 3,
-                  py: 1.6,
-                  px: 1.5,
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  textTransform: 'none',
-                  flex: 1,
-                  boxShadow: 'none',
-                  '&:hover': {
-                    bgcolor: '#111827',
-                    boxShadow: 'none'
-                  }
-                }}
-              >
-                Download HD
-              </Button>
-              <Tooltip 
-                title="Publish" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: '#F3F4F6',
-                    color: '#1F2937',
-                    borderRadius: 3,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '&:hover': {
-                      bgcolor: '#E5E7EB',
-                      color: '#7b5cfa'
-                    }
-                  }}
-                  onClick={() => setOpenPublishModal(true)}
-                >
-                  <Publish sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-              <Tooltip 
-                title="Edit" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: '#F3F4F6',
-                    color: '#1F2937',
-                    borderRadius: 3,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '&:hover': {
-                      bgcolor: '#E5E7EB',
-                      color: '#7b5cfa'
-                    }
-                  }}
-                >
-                  <Edit sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-            </Box>
-
-            <Box sx={{ 
-              width: '85%',
-              maxWidth: 280,
-              mx: 0,
-              ml: 2,
-              textAlign: 'center'
-            }}>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block'
-              }}>
-                Video appear glitchy? Don't worry, it
-              </Typography>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block',
-                pl: 2
-              }}>
-                won't when you download it.
-              </Typography>
-            </Box>
-          </Grid>
-
-          {/* Third Variation Content */}
-          <Grid item xs={12} lg={8}>
-            <Box sx={{ 
-              height: '100%', 
-              display: 'flex', 
-              flexDirection: 'column',
-              maxHeight: 'calc(70vw * 16/9)',
-              overflow: 'hidden'
-            }}>
-              <Box sx={{ 
-                flex: 1, 
-                overflow: 'auto',
-                pr: 2
-              }}>
-                <Typography variant="h5" sx={{ fontWeight: '700', color: '#1F2937', mb: 3 }}>
-                  {shorts[2].title}
-                </Typography>
-
-                {/* Virality Score */}
-                <Box sx={{ mb: 4 }}>
-                  <Box sx={{ 
-                    bgcolor: '#F1F5F9',
-                    p: 3,
-                    borderRadius: 4
-                  }}>
-                    <Typography variant="h6" sx={{ fontWeight: '600', color: '#1F2937', fontSize: '1rem' }}>
-                      #3 Virality score ({shorts[2].viralityScore}/100)
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: '#6B7280', lineHeight: 1.6, fontSize: '1rem', fontWeight: '400' }}>
-                      {shorts[2].viralityDescription}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Transcript */}
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: '600', color: '#1F2937', mb: 2, fontSize: '1rem' }}>
-                    Transcript
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#6B7280', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '500' }}>
-                    {shorts[2].transcript}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
+                    </Grid>
         </Grid>
-      </Container>
+
+       
+        </Container>
+
+     
       <Modal
         open={openPublishModal}
         onClose={() => setOpenPublishModal(false)}

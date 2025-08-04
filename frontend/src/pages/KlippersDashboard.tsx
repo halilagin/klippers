@@ -11,6 +11,7 @@ import {
   Chip,
   CircularProgress
 } from '@mui/material';
+import klippersLogo from '../assets/klippers-logo.png';
 import { 
   Movie, 
   Upload, 
@@ -98,15 +99,15 @@ const KlippersDashboard = () => {
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             {/* Logo */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Box sx={{ 
-                width: 32,
-                height: 32,
-                bgcolor: '#c6f479',
-                borderRadius: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }} />
+              <img 
+                src={klippersLogo} 
+                alt="Klippers Logo" 
+                style={{ 
+                  width: 80, 
+                  height: 80,
+                  objectFit: 'contain'
+                }} 
+              />
               <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
                 Klippers
               </Typography>
@@ -132,8 +133,8 @@ const KlippersDashboard = () => {
         }}>
           {/* Dashboard Title */}
           <Typography variant="body1" sx={{ 
-            fontWeight: '500', 
-            color: '#94A3B8',
+            fontWeight: '300', 
+            color: '#808080',
             mb: 5,
             textAlign: 'left',
             fontSize: '0.875rem',
@@ -336,8 +337,8 @@ const KlippersDashboard = () => {
                   
                   <Box sx={{ mt: 2 }}>
                     <Typography variant="body2" sx={{ 
-                      fontWeight: '600', 
-                      color: 'white',
+                      fontWeight: '300', 
+                      color: '#808080',
                       fontSize: '0.875rem'
                     }}>
                       {previewData.name || previewData.title}

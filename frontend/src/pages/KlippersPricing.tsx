@@ -19,6 +19,7 @@ import {
   Chip,
   Link
 } from '@mui/material';
+import klippersLogo from '../assets/klippers-logo.png';
 import { Movie, CheckCircle, InfoOutlined } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -103,16 +104,16 @@ const KlippersPricing = () => {
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
               <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ 
-                  width: 32,
-                  height: 32,
-                  bgcolor: '#c6f479',
-                  borderRadius: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 1
-                }} />
+                <img 
+                  src={klippersLogo} 
+                  alt="Klippers Logo" 
+                  style={{ 
+                    width: 80, 
+                    height: 80,
+                    objectFit: 'contain',
+                    marginRight: '8px'
+                  }} 
+                />
                 <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
                   Klippers
                 </Typography>
@@ -128,7 +129,7 @@ const KlippersPricing = () => {
         <Typography component="h1" variant="h2" sx={{ fontWeight: '800', mb: 2, color: 'white' }}>
           Plans
         </Typography>
-        <Typography variant="h6" sx={{ color: '#94A3B8', mb: 4 }}>
+        <Typography variant="h6" sx={{ color: '#808080', mb: 4 }}>
           No hidden fees. Cancel anytime.
         </Typography>
 
@@ -139,10 +140,10 @@ const KlippersPricing = () => {
           aria-label="text alignment"
                       sx={{ mb: 6, bgcolor: 'rgba(255, 255, 255, 0.08)', borderRadius: '9999px', p: 0.5, backdropFilter: 'blur(15px)', border: '1px solid rgba(255, 255, 255, 0.15)', boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
         >
-          <ToggleButton value="monthly" aria-label="left aligned" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'monthly' ? 'white' : '#94A3B8', bgcolor: period === 'monthly' ? '#c6f479' : 'transparent' }}>
+          <ToggleButton value="monthly" aria-label="left aligned" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'monthly' ? 'white' : '#808080', bgcolor: period === 'monthly' ? '#c6f479' : 'transparent' }}>
             Monthly
           </ToggleButton>
-          <ToggleButton value="yearly" aria-label="centered" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'yearly' ? 'white' : '#94A3B8', bgcolor: period === 'yearly' ? '#c6f479' : 'transparent' }}>
+          <ToggleButton value="yearly" aria-label="centered" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'yearly' ? 'white' : '#808080', bgcolor: period === 'yearly' ? '#c6f479' : 'transparent' }}>
             Yearly <Chip label="Save $190" size="small" sx={{ ml: 1, bgcolor: '#D1FAE5', color: '#065F46' }} />
           </ToggleButton>
         </ToggleButtonGroup>
@@ -166,7 +167,7 @@ const KlippersPricing = () => {
                   <Typography variant="h6" sx={{ fontWeight: '700' }}>{plan.name}</Typography>
                 </Box>
                 <Typography variant="h3" component="div" sx={{ fontWeight: '800', color: 'white' }}>
-                  {period === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice}<Typography variant="h6" component="span" sx={{ color: '#94A3B8' }}>/{period === 'monthly' ? 'month' : 'year'}</Typography>
+                  {period === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice}<Typography variant="h6" component="span" sx={{ color: '#808080' }}>/{period === 'monthly' ? 'month' : 'year'}</Typography>
                 </Typography>
 
                 <Button 
@@ -189,7 +190,7 @@ const KlippersPricing = () => {
                   Get Started
                 </Button>
                 
-                <Typography variant="caption" sx={{ color: '#94A3B8', display: 'block', textAlign: 'center', mb: 3 }}>
+                <Typography variant="caption" sx={{ color: '#808080', display: 'block', textAlign: 'center', mb: 3 }}>
                   Secured by Stripe
                 </Typography>
 
@@ -200,7 +201,7 @@ const KlippersPricing = () => {
                         <CheckCircle sx={{ color: '#c6f479' }} />
                       </ListItemIcon>
                       <ListItemText primary={feature} sx={{ '& .MuiListItemText-primary': { color: 'white' } }} />
-                      <InfoOutlined sx={{ color: '#94A3B8' }} />
+                      <InfoOutlined sx={{ color: '#808080' }} />
                     </ListItem>
                   ))}
                 </List>
@@ -208,7 +209,7 @@ const KlippersPricing = () => {
             </Card>
           ))}
         </Box>
-        <Typography sx={{ mt: 6, color: '#94A3B8' }}>
+        <Typography sx={{ mt: 6, color: '#808080' }}>
           Need more? <Link href="#" sx={{ fontWeight: 600, color: '#c6f479' }}>Let's talk!</Link>
         </Typography>
       </Container>

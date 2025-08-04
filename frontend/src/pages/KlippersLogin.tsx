@@ -11,6 +11,7 @@ import {
   AppBar,
   Toolbar
 } from '@mui/material';
+import klippersLogo from '../assets/klippers-logo.png';
 import { Movie } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -43,16 +44,16 @@ const KlippersLogin = () => {
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
               <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ 
-                  width: 32,
-                  height: 32,
-                  bgcolor: '#c6f479',
-                  borderRadius: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 1
-                }} />
+                <img 
+                  src={klippersLogo} 
+                  alt="Klippers Logo" 
+                  style={{ 
+                    width: 80, 
+                    height: 80,
+                    objectFit: 'contain',
+                    marginRight: '8px'
+                  }} 
+                />
                 <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
                   Klippers
                 </Typography>
@@ -105,7 +106,7 @@ const KlippersLogin = () => {
           <Typography sx={{ color: '#94A3B8', my: 2 }}>or</Typography>
 
           <Box component="form" noValidate sx={{ mt: 1, width: '100%' }}>
-            <Typography variant="body2" sx={{ fontWeight: '600', mb: 1, textAlign: 'left', color: 'white' }}>
+            <Typography variant="body2" sx={{ fontWeight: '300', mb: 1, textAlign: 'left', color: '#808080' }}>
               Email address
             </Typography>
             <TextField
@@ -144,7 +145,7 @@ const KlippersLogin = () => {
                 },
               }}
             />
-            <Typography variant="body2" sx={{ fontWeight: '600', mb: 1, mt: 2, textAlign: 'left', color: 'white' }}>
+            <Typography variant="body2" sx={{ fontWeight: '300', mb: 1, mt: 2, textAlign: 'left', color: '#808080' }}>
               Your Password
             </Typography>
                         <TextField
@@ -210,7 +211,7 @@ const KlippersLogin = () => {
               </Link>
             </Box>
             <Box sx={{ textAlign: 'center', mt: 1 }}>
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+              <Typography variant="body2" sx={{ color: '#808080', fontWeight: '300' }}>
                 Don't have an account?{' '}
                 <Link href="#" variant="body2" sx={{ color: '#c6f479', fontWeight: '600', textDecoration: 'none' }}>
                   Sign up

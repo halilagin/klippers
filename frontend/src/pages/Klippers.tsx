@@ -17,6 +17,7 @@ import {
   AppBar,
   Toolbar
 } from '@mui/material';
+import klippersLogo from '../assets/klippers-logo.png';
 import {
   PlayArrow,
   TrendingUp,
@@ -149,15 +150,15 @@ const Klippers: React.FC = () => {
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Box sx={{ 
-                  width: 32,
-                  height: 32,
-                  bgcolor: '#c6f479',
-                  borderRadius: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }} />
+                              <img 
+                src={klippersLogo} 
+                alt="Klippers Logo" 
+                style={{ 
+                  width: 80, 
+                  height: 80,
+                  objectFit: 'contain'
+                }} 
+              />
                 <Typography variant="h6" sx={{ 
                   fontWeight: '800', 
                   color: 'white',
@@ -251,7 +252,7 @@ const Klippers: React.FC = () => {
           <Typography variant="h2" sx={{ 
             fontWeight: '300', 
             mb: 6, 
-            color: '#94A3B8',
+            color: '#808080',
             fontSize: { xs: '1.25rem', md: '1.5rem' }
           }}>
             Klippers turns your long videos into TikToks, Reels, and Shorts in one click.
@@ -282,15 +283,15 @@ const Klippers: React.FC = () => {
             border: '1px solid rgba(255, 255, 255, 0.15)',
             backdropFilter: 'blur(15px)'
           }}>
-            <Upload sx={{ fontSize: 18, color: '#94A3B8' }} />
+            <Upload sx={{ fontSize: 18, color: '#808080' }} />
             <Box sx={{ 
               flex: 1, 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center',
-              color: '#94A3B8'
+              color: '#808080'
             }}>
-              <Typography variant="body1" sx={{ color: '#94A3B8', opacity: 0.8 }}>
+              <Typography variant="body1" sx={{ color: '#808080', opacity: 0.8 }}>
                 Paste YouTube link or drop a file
               </Typography>
             </Box>
@@ -550,7 +551,7 @@ const Klippers: React.FC = () => {
               <Typography variant="h2" sx={{ fontWeight: '800', mb: 3, lineHeight: 1.3, color: 'white' }}>
                 Find viral moments effortlessly with <span style={{ color: '#c6f479' }}>AI Detection</span>
               </Typography>
-              <Typography variant="h6" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+              <Typography variant="h6" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                 Our advanced AI acts as your personal video editor, analyzing your content for emotional peaks, engaging dialogue, and viral-worthy moments. It automatically pinpoints the best segments, saving you hours of manual searching.
               </Typography>
             </Grid>
@@ -572,7 +573,7 @@ const Klippers: React.FC = () => {
               <Typography variant="h2" sx={{ fontWeight: '800', mb: 3, lineHeight: 1.3, color: 'white' }}>
                 Create & export viral clips in a <span style={{ color: '#c6f479' }}>single click</span>
               </Typography>
-              <Typography variant="h6" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+              <Typography variant="h6" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                 Transform your long-form content into multiple, ready-to-publish viral clips with just a single click. Our system handles the complex editing, so you can focus on creating.
               </Typography>
             </Grid>
@@ -584,7 +585,7 @@ const Klippers: React.FC = () => {
               <Typography variant="h2" sx={{ fontWeight: '800', mb: 3, lineHeight: 1.3, color: 'white' }}>
                 Perfectly frame your shots with <span style={{ color: '#c6f479' }}>smart cropping</span>
               </Typography>
-              <Typography variant="h6" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+              <Typography variant="h6" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                 Our intelligent cropping and reframing technology automatically keeps the main subject in focus. It ensures your videos look professionally shot and perfectly formatted for any vertical platform.
               </Typography>
             </Grid>
@@ -606,7 +607,7 @@ const Klippers: React.FC = () => {
               <Typography variant="h2" sx={{ fontWeight: '800', mb: 3, lineHeight: 1.3, color: 'white' }}>
                 Engage more viewers with <span style={{ color: '#c6f479' }}>automatic subtitles</span>
               </Typography>
-              <Typography variant="h6" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+              <Typography variant="h6" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                 Instantly generate and sync accurate, stylish subtitles for your clips. Boost engagement and make your content accessible to a wider audience with perfectly timed captions.
               </Typography>
             </Grid>
@@ -870,7 +871,7 @@ const Klippers: React.FC = () => {
                 <Typography variant="body1" sx={{ fontWeight: '550', color: 'white', mb: 2, fontSize: '1.25rem' }}>
                   Start by uploading a video
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.7, fontSize: '1.1rem' }}>
+                <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.7, fontSize: '1.1rem' }}>
                   Simply paste a link to your YouTube video, or upload a video file. Our rule of thumb: a one-minute long video produces about 5 video clips.
                 </Typography>
               </Box>
@@ -883,7 +884,7 @@ const Klippers: React.FC = () => {
                 <Typography variant="body1" sx={{ fontWeight: '550', color: 'white', mb: 2, fontSize: '1.25rem' }}>
                   Let Klippers' AI magically create vertical videos
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.7, fontSize: '1.1rem' }}>
+                <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.7, fontSize: '1.1rem' }}>
                   Just sit back and relax, while Klippers does all the work for you. In a matter of minutes, we will give you multiple viral-worthy clips.
                 </Typography>
               </Box>
@@ -896,7 +897,7 @@ const Klippers: React.FC = () => {
                 <Typography variant="body1" sx={{ fontWeight: '550', color: 'white', mb: 2, fontSize: '1.25rem' }}>
                   Post your videos and grow your followers
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.7, fontSize: '1.1rem' }}>
+                <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.7, fontSize: '1.1rem' }}>
                   After you make any final touches, you're all set to export them in high-resolution and share them on your other social channels.
                 </Typography>
               </Box>
@@ -917,7 +918,7 @@ const Klippers: React.FC = () => {
               Frequently Asked Questions
             </Typography>
             <Typography variant="h6" sx={{ 
-              color: '#94A3B8',
+              color: '#808080',
               maxWidth: '600px',
               mx: 'auto'
             }}>
@@ -942,7 +943,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     Our AI analyzes facial expressions, speech patterns, engagement cues, and audio intensity to identify the most compelling moments in your videos.
                   </Typography>
                 </AccordionDetails>
@@ -964,7 +965,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     We support MP4, MOV, AVI, and most common video formats. Upload your video and we'll handle the rest.
                   </Typography>
                 </AccordionDetails>
@@ -986,7 +987,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     Yes! You can edit the AI-generated clips, adjust timing, add text overlays, and customize them to match your brand.
                   </Typography>
                 </AccordionDetails>
@@ -1008,7 +1009,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     Processing time depends on video length. A 1-hour video typically takes 5-10 minutes to analyze and generate clips.
                   </Typography>
                 </AccordionDetails>
@@ -1030,7 +1031,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     We offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your subscription.
                   </Typography>
                 </AccordionDetails>
@@ -1052,7 +1053,7 @@ const Klippers: React.FC = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body1" sx={{ color: '#94A3B8', lineHeight: 1.6, fontWeight: '300' }}>
+                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontWeight: '300' }}>
                     Absolutely. We use enterprise-grade encryption and your videos are automatically deleted after processing.
                   </Typography>
                 </AccordionDetails>
@@ -1080,28 +1081,28 @@ const Klippers: React.FC = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#c6f479' }
                 }}>
                   Features
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Pricing
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Templates
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
@@ -1122,28 +1123,28 @@ const Klippers: React.FC = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   About
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Blog
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Careers
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
@@ -1164,28 +1165,28 @@ const Klippers: React.FC = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Help Center
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Contact Us
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Status
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
@@ -1206,28 +1207,28 @@ const Klippers: React.FC = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'cursor',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Privacy
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Terms
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Cookies
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
@@ -1247,26 +1248,26 @@ const Klippers: React.FC = () => {
             flexWrap: 'wrap',
             gap: 2
           }}>
-                          <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                          <Typography variant="body2" sx={{ color: '#808080' }}>
                 © 2024 Klippers. All rights reserved.
               </Typography>
               <Box sx={{ display: 'flex', gap: 4 }}>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Privacy Policy
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
                   Terms of Service
                 </Typography>
                 <Typography variant="body2" sx={{ 
-                  color: '#94A3B8',
+                  color: '#808080',
                   cursor: 'pointer',
                   '&:hover': { color: '#7b5cfa' }
                 }}>
