@@ -17,6 +17,7 @@ import {
   AppBar,
   Toolbar
 } from '@mui/material';
+import CustomCursor from '../components/CustomCursor';
 import klippersLogo from '../assets/klippers-logo.png';
 import {
   PlayArrow,
@@ -133,7 +134,9 @@ const Klippers: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ bgcolor: 'black', minHeight: '100vh' }}>
+    <>
+      <CustomCursor />
+      <Box sx={{ bgcolor: 'black', minHeight: '100vh' }}>
       {/* Navigation */}
       <AppBar 
         position="sticky"
@@ -1294,6 +1297,7 @@ const Klippers: React.FC = () => {
         </Container>
       </Box>
     </Box>
+    </>
   );
 };
 
