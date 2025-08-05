@@ -213,7 +213,7 @@ const KlippersShorts = () => {
             sx={{ 
               bgcolor: '#fafafa',
               color: 'black',
-              borderRadius: 3,
+              borderRadius: 12,
               px: 2.5,
               py: 1.2,
               fontWeight: '600',
@@ -224,6 +224,7 @@ const KlippersShorts = () => {
               boxShadow: 'none',
               mr: 2,
               border: 'none',
+              position: 'relative',
               '&:hover': {
                 bgcolor: '#ffffff',
                 transform: 'scale(1.05)',
@@ -232,22 +233,24 @@ const KlippersShorts = () => {
             }}
           >
             Generate new
-                          <Chip 
-                label="Pro" 
-                size="small" 
-                sx={{ 
-                  bgcolor: 'rgba(255, 255, 255, 0.15)', 
-                  color: 'white',
-                  fontSize: '0.7rem',
-                  height: 20,
-                  fontWeight: '500',
-                  borderRadius: 12,
-                  backdropFilter: 'blur(15px)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
-                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
-                 
-                }} 
-              />
+            <Chip 
+              label="Pro" 
+              size="small" 
+              sx={{ 
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
+                color: 'white',
+                fontSize: '0.7rem',
+                height: 20,
+                fontWeight: '600',
+                borderRadius: 12,
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(139, 92, 246, 0.3)',
+                ml: 0.5,
+                '& .MuiChip-label': {
+                  px: 1
+                }
+              }} 
+            />
           </Button>
         </Box>
 
@@ -503,7 +506,12 @@ const KlippersShorts = () => {
           p: 0,
           position: 'relative',
           overflow: 'hidden',
-          mx: 'auto'
+          mx: 'auto',
+          outline: 'none',
+          '&:focus': {
+            outline: 'none',
+            boxShadow: 24
+          }
         }}>
           {/* Close Button */}
           <IconButton
@@ -788,7 +796,12 @@ const KlippersShorts = () => {
           flexDirection: 'column',
           p: 4,
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          outline: 'none',
+          '&:focus': {
+            outline: 'none',
+            boxShadow: 24
+          }
         }}>
           {/* Close Button */}
           <IconButton
@@ -864,6 +877,7 @@ const KlippersShorts = () => {
                 outline: 'none',
                 backgroundColor: 'white'
               }}
+              onFocus={(e) => e.target.style.outline = 'none'}
             />
           </Box>
 

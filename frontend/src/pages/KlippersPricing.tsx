@@ -107,7 +107,7 @@ const KlippersPricing = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }} tabIndex={-1}>
                 <img 
                   src={klippersLogo} 
                   alt="Klippers Logo" 
@@ -118,7 +118,15 @@ const KlippersPricing = () => {
                     marginRight: '8px'
                   }} 
                 />
-                <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
+                <Typography variant="h6" sx={{ 
+                  fontWeight: '700', 
+                  color: 'white',
+                  outline: 'none',
+                  '&:focus': {
+                    outline: 'none',
+                    boxShadow: 'none'
+                  }
+                }}>
                   Klippers
                 </Typography>
               </RouterLink>

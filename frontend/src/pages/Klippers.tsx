@@ -161,11 +161,17 @@ const Klippers: React.FC = () => {
                   height: 80,
                   objectFit: 'contain'
                 }} 
+                tabIndex={-1}
+                onFocus={(e) => e.target.blur()}
               />
                 <Typography variant="h6" sx={{ 
                   fontWeight: '800', 
                   color: 'white',
-                  transition: 'color 0.3s ease'
+                  outline: 'none',
+                  '&:focus': {
+                    outline: 'none',
+                    boxShadow: 'none'
+                  }
                 }}>
                   Klippers
                 </Typography>
@@ -187,9 +193,16 @@ const Klippers: React.FC = () => {
                   fontWeight: '600',
                   position: 'relative',
                   overflow: 'hidden',
-                  '&:hover': {
-                    bgcolor: 'rgba(255,255,255,0.1)'
-                  }
+                                  '&:hover': {
+                  bgcolor: 'rgba(255,255,255,0.15)',
+                  transform: 'translateY(-1px)',
+                  boxShadow: '0 4px 12px rgba(255, 255, 255, 0.2)',
+                },
+                '&:focus': {
+                  bgcolor: 'rgba(255,255,255,0.2)',
+                  outline: '2px solid #c6f479',
+                  outlineOffset: '2px',
+                }
                   }}
               >
                   Pricing
@@ -215,7 +228,14 @@ const Klippers: React.FC = () => {
                 position: 'relative',
                 overflow: 'hidden',
                 '&:hover': {
-                  bgcolor: 'rgba(255,255,255,0.1)',
+                  bgcolor: 'rgba(255,255,255,0.15)',
+                  transform: 'translateY(-1px)',
+                  boxShadow: '0 4px 12px rgba(255, 255, 255, 0.2)',
+                },
+                '&:focus': {
+                  bgcolor: 'rgba(255,255,255,0.2)',
+                  outline: '2px solid #c6f479',
+                  outlineOffset: '2px',
                 }
                 }}
               >
@@ -240,8 +260,14 @@ const Klippers: React.FC = () => {
                 overflow: 'hidden',
                 '&:hover': {
                   bgcolor: '#ffffff',
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.3)',
+                },
+                '&:focus': {
+                  bgcolor: '#ffffff',
+                  outline: '2px solid #c6f479',
+                  outlineOffset: '2px',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.4)',
                 }
                 }}
               >
@@ -295,7 +321,13 @@ const Klippers: React.FC = () => {
             alignItems: 'center',
             gap: 2,
             border: '1px solid rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(15px)'
+            backdropFilter: 'blur(15px)',
+            transition: 'all 0.3s ease',
+            cursor: 'pointer',
+            '&:hover': {
+              border: '1px solid rgba(255, 255, 255, 0.4)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)',
+            }
           }}>
             <Upload sx={{ fontSize: 18, color: '#808080' }} />
             <Box sx={{ 
@@ -325,8 +357,14 @@ const Klippers: React.FC = () => {
                 overflow: 'hidden',
                 '&:hover': {
                   bgcolor: '#ffffff',
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.3)',
+                },
+                '&:focus': {
+                  bgcolor: '#ffffff',
+                  outline: '2px solid #c6f479',
+                  outlineOffset: '2px',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.4)',
                 }
               }}
             >
@@ -359,7 +397,15 @@ const Klippers: React.FC = () => {
               position: 'relative',
               backdropFilter: 'blur(15px)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer',
+              '&:hover': {
+                bgcolor: 'rgba(255, 255, 255, 0.12)',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
+                boxShadow: '0 0 30px rgba(255, 255, 255, 0.2)',
+                transform: 'scale(1.02)',
+              }
             }}>
               <video
                 src="https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/3.mp4"

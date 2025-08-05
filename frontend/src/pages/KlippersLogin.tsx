@@ -47,7 +47,7 @@ const KlippersLogin = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }} tabIndex={-1}>
                 <img 
                   src={klippersLogo} 
                   alt="Klippers Logo" 
@@ -58,7 +58,15 @@ const KlippersLogin = () => {
                     marginRight: '8px'
                   }} 
                 />
-                <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
+                <Typography variant="h6" sx={{ 
+                  fontWeight: '700', 
+                  color: 'white',
+                  outline: 'none',
+                  '&:focus': {
+                    outline: 'none',
+                    boxShadow: 'none'
+                  }
+                }}>
                   Klippers
                 </Typography>
               </RouterLink>
@@ -127,17 +135,30 @@ const KlippersLogin = () => {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                   bgcolor: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(15px)',
                   boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  transition: 'border-color 0.3s ease',
                   '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.15)',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
                   },
                   '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.25)',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#c6f479',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
+                  },
+                  '&:hover': {
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                  },
+                  '&.Mui-focused': {
+                    border: '1px solid #c6f479',
                   },
                 },
                 '& .MuiInputBase-input': {
@@ -166,17 +187,30 @@ const KlippersLogin = () => {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
                   bgcolor: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
                   backdropFilter: 'blur(15px)',
                   boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  transition: 'border-color 0.3s ease',
                   '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.15)',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
                   },
                   '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.25)',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#c6f479',
+                    border: 'none !important',
+                    borderWidth: '0 !important',
+                    borderColor: 'transparent !important',
+                  },
+                  '&:hover': {
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                  },
+                  '&.Mui-focused': {
+                    border: '1px solid #c6f479',
                   },
                 },
                 '& .MuiInputBase-input': {

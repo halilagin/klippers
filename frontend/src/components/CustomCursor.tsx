@@ -40,7 +40,7 @@ const CustomCursor: React.FC = () => {
     <div
       className="custom-cursor"
       style={{
-        transform: `translate3d(${position.x - 16}px, ${position.y - 16}px, 0)`,
+        transform: `translate3d(${position.x - 12}px, ${position.y - 12}px, 0)`,
         opacity: isOverButton ? 0 : 1,
         transition: 'opacity 0.2s ease'
       }}
