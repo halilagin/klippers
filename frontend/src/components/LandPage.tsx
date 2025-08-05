@@ -135,7 +135,7 @@ const LandPage = () => {
     );
 
     return (
-        <Box sx={{ bgcolor: '#ffffff', overflowX: 'hidden', fontFamily: 'Inter, sans-serif' }}>
+        <Box sx={{ bgcolor: '#ffffff', overflowX: 'hidden', fontFamily: 'Roboto Flex, sans-serif' }}>
             <AppBar 
                 position="absolute"
                 sx={{ 
@@ -335,7 +335,7 @@ const Image = () => {
                     textAlign: 'center',
                     fontWeight: 500,
                     fontSize: { xs: '38px', sm: '50px', md: '64px' },
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Roboto Flex, sans-serif',
                     position: 'absolute',
                     top: '45%',
                     left: '50%',

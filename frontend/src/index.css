@@ -49,6 +49,26 @@ button, a, [role="button"], input, textarea, select {
   cursor: none !important;
 }
 
+/* Import Roboto Flex font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap');
+
+/* Global font settings */
+* {
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+body {
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 400;
+}
+
+/* Favicon filter to make logo black */
+link[rel="icon"] {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Alternative: Use a different favicon approach */
+
 /* Accessibility improvements */
 *:focus {
   outline: 2px solid #c6f479 !important;
@@ -143,6 +163,30 @@ a.Mui-focused,
   border: none !important;
   border-width: 0 !important;
   border-color: transparent !important;
+}
+
+/* Logo transformation animation */
+@keyframes fadeIn {
+  0%, 40% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Energetic logo animation */
+@keyframes logoEnergetic {
+  0%, 35% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  45%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .MuiOutlinedInput-root:hover fieldset {

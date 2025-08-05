@@ -31,7 +31,7 @@ const CARD_ELEMENT_OPTIONS = {
       iconColor: '#666', // Match icon color
       color: '#333',
       fontWeight: '400',
-      fontFamily: '"Inter", sans-serif',
+      fontFamily: '"Roboto Flex", sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
       '::placeholder': { color: '#aab7c4' },

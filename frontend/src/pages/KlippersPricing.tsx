@@ -91,7 +91,7 @@ const KlippersPricing = () => {
       <CssBaseline />
       <GlobalStyles styles={{
         body: {
-          fontFamily: "'Inter', sans-serif"
+          fontFamily: "'Roboto Flex', sans-serif"
         }
       }} />
 
