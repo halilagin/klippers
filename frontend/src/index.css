@@ -40,15 +40,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Custom cursor styles */
-* {
-  cursor: none !important;
-}
-
-button, a, [role="button"], input, textarea, select {
-  cursor: none !important;
-}
-
 /* Import Roboto Flex font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900&display=swap');
 
@@ -217,22 +208,6 @@ a.Mui-focused,
 .skip-link:focus {
   top: 6px;
 }
-
-.custom-cursor {
-  position: fixed;
-  width: 24px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 255, 255, 1);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  mix-blend-mode: difference;
-}
-
-
 
 /* Button hover effects */
 .button-hover-effect {
