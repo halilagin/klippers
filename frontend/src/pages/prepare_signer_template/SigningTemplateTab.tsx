@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Tab, Tabs, Button } from '@mui/material';
+import { Box, Tab, Tabs, Button, Typography } from '@mui/material';
 import SignerList from './SignerList';
 import useCreateSignTemplateState from './state/CreateSignTemplateState';
 import LocateSignsOnPdf from './LocateSignsOnPdf';
 import PdfUpload from './PdfUpload';
 import { SortSharp } from '@mui/icons-material';
-import SortSigners from './SortSigners';
-import Review from './Review';
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -145,7 +144,12 @@ export default function TabComponent() {
       
       <TabPanel value={value} index={2}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <SortSigners/>
+          <Box sx={{ p: 2, textAlign: 'center' }}>
+            <Typography variant="h6">Sort Signers</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Sort signers functionality will be implemented here.
+            </Typography>
+          </Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, mt: 2 }}>
             <Button 
               variant="outlined" 

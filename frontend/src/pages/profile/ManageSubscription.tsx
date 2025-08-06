@@ -7,7 +7,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { Plan, plans } from '../subscription/PlanDescriptions';
 import Subscription from '../subscription/Subscription';
 import { useNavigate } from 'react-router-dom';
-import './../Dashboard.css'; // Import dashboard styles for TopMenu
+
 
 // Create theme for breakpoints only if not already defined globally
 // If you have a global theme provider, you might not need this here.

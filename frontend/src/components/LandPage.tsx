@@ -36,7 +36,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import DevicesIcon from '@mui/icons-material/Devices';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CloseIcon from '@mui/icons-material/Close';
-import '../styles/LandPage.css';
+
 
 const LandPage = () => {
     const navigate = useNavigate();
@@ -135,7 +135,7 @@ const LandPage = () => {
     );
 
     return (
-        <Box sx={{ bgcolor: '#ffffff', overflowX: 'hidden', fontFamily: 'Inter, sans-serif' }}>
+        <Box sx={{ bgcolor: '#ffffff', overflowX: 'hidden', fontFamily: 'Roboto Flex, sans-serif' }}>
             <AppBar 
                 position="absolute"
                 sx={{ 
@@ -335,7 +335,7 @@ const Image = () => {
                     textAlign: 'center',
                     fontWeight: 500,
                     fontSize: { xs: '38px', sm: '50px', md: '64px' },
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Roboto Flex, sans-serif',
                     position: 'absolute',
                     top: '45%',
                     left: '50%',

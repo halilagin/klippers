@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PdfView from './PdfView';
+import PdfView from './PdfView copy';
 import useCreateSignTemplateState from './state/CreateSignTemplateState';
 import SelectSignerForLocatingSign from './SelectSignerForLocatingSign';
 import LeftPane from './LeftPane';

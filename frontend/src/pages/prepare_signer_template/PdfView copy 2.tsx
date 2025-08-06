@@ -1,11 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import signerInfo from '../../test/test_signers01_amas';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import './PdfView.css';
+
 import useCreateSignTemplateState from './state/CreateSignTemplateState';
 
 interface Signature {
