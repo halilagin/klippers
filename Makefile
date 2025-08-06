@@ -3,7 +3,7 @@ dup_build:
 
 dup:
 	cp backend/.env.docker backend/.env && \
-	docker compose up -d --build
+	docker compose up -d 
 down:
 	docker compose down
 psql_reinit:
