@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     git \
     curl \
+    cmake \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
