@@ -19,7 +19,6 @@ import {
   Chip,
   Link
 } from '@mui/material';
-import CustomCursor from '../components/CustomCursor';
 
 import klippersLogo from '../assets/klippers-logo.png';
 import { Movie, CheckCircle, InfoOutlined } from '@mui/icons-material';
@@ -80,7 +79,6 @@ const KlippersPricing = () => {
 
   return (
     <>
-      <CustomCursor />
       <Box sx={{
       display: 'flex',
       flexDirection: 'column',

@@ -11,7 +11,6 @@ import {
   AppBar,
   Toolbar
 } from '@mui/material';
-import CustomCursor from '../components/CustomCursor';
 
 import klippersLogo from '../assets/klippers-logo.png';
 import { Movie } from '@mui/icons-material';
@@ -20,7 +19,6 @@ import { Link as RouterLink } from 'react-router-dom';
 const KlippersLogin = () => {
   return (
     <>
-      <CustomCursor />
       <Box sx={{
       display: 'flex',
       flexDirection: 'column',

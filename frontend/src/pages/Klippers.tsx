@@ -17,7 +17,6 @@ import {
   AppBar,
   Toolbar
 } from '@mui/material';
-import CustomCursor from '../components/CustomCursor';
 import klippersLogo from '../assets/klippers-logo.png';
 import klippersFavicon from '../assets/klippersfavicon.png';
 import klippersLogo2 from '/klipperslogo2.png';
@@ -137,7 +136,6 @@ const Klippers: React.FC = () => {
 
   return (
     <>
-      <CustomCursor />
       <Box sx={{ bgcolor: 'black', minHeight: '100vh' }}>
       {/* Navigation */}
       <AppBar 
