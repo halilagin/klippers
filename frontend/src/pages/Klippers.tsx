@@ -15,7 +15,13 @@ import {
   AccordionDetails,
   keyframes,
   AppBar,
-  Toolbar
+  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
 } from '@mui/material';
 import klippersLogo from '../assets/klippers-logo.png';
 import klippersFavicon from '../assets/klippersfavicon.png';
@@ -47,7 +53,8 @@ import {
   Movie,
   UploadFile,
   Download,
-  ArrowDownward
+  ArrowDownward,
+  Cancel as CancelIcon
 } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -75,6 +82,377 @@ const testimonials = [
   }
 ];
 
+const comparisonData = {
+  'opus-clip': {
+    name: 'Opus Clip',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '20-45 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$39/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Free Trial',
+        klippers: '1 Credit',
+        alternative: '5 videos',
+        description: 'What you get for free'
+      }
+    ],
+    stats: {
+      speed: '3x Faster',
+      quality: 'Better AI',
+      price: '25% Cheaper'
+    }
+  },
+  'capcut': {
+    name: 'CapCut',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '15-30 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '4K',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: 'Free',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'AI Features',
+        klippers: 'Advanced',
+        alternative: 'Basic',
+        description: 'AI-powered editing capabilities'
+      }
+    ],
+    stats: {
+      speed: '2x Faster',
+      quality: 'Better AI',
+      price: 'Premium Features'
+    }
+  },
+  'invideo': {
+    name: 'InVideo',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '25-40 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$25/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Template Library',
+        klippers: 'AI-Generated',
+        alternative: '10,000+',
+        description: 'Available templates and styles'
+      }
+    ],
+    stats: {
+      speed: '4x Faster',
+      quality: 'Better AI',
+      price: 'Similar Price'
+    }
+  },
+  'pictory': {
+    name: 'Pictory',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '30-60 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$23/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'AI Capabilities',
+        klippers: 'Advanced',
+        alternative: 'Basic',
+        description: 'AI-powered features and automation'
+      }
+    ],
+    stats: {
+      speed: '5x Faster',
+      quality: 'Better AI',
+      price: 'Similar Price'
+    }
+  },
+  'synthesia': {
+    name: 'Synthesia',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '45-90 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$30/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Use Case',
+        klippers: 'Video Editing',
+        alternative: 'AI Avatars',
+        description: 'Primary functionality focus'
+      }
+    ],
+    stats: {
+      speed: '8x Faster',
+      quality: 'Better AI',
+      price: 'Similar Price'
+    }
+  },
+  'lumen5': {
+    name: 'Lumen5',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '20-35 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$19/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Content Type',
+        klippers: 'Video Clips',
+        alternative: 'Social Media',
+        description: 'Primary content focus'
+      }
+    ],
+    stats: {
+      speed: '3x Faster',
+      quality: 'Better AI',
+      price: 'Premium Features'
+    }
+  },
+  'veed': {
+    name: 'Veed.io',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '15-25 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '4K',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$18/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Editing Features',
+        klippers: 'AI-Focused',
+        alternative: 'Comprehensive',
+        description: 'Range of editing capabilities'
+      }
+    ],
+    stats: {
+      speed: '2x Faster',
+      quality: 'Better AI',
+      price: 'Premium AI'
+    }
+  },
+  'descript': {
+    name: 'Descript',
+    features: [
+      {
+        feature: 'AI Viral Detection',
+        klippers: true,
+        alternative: false,
+        description: 'Automatically finds the most engaging moments'
+      },
+      {
+        feature: '1-Click Generation',
+        klippers: true,
+        alternative: false,
+        description: 'Create multiple clips with a single click'
+      },
+      {
+        feature: 'Processing Speed',
+        klippers: '5-10 minutes',
+        alternative: '25-40 minutes',
+        description: 'Time to process 1-hour video'
+      },
+      {
+        feature: 'Export Quality',
+        klippers: '4K',
+        alternative: '1080p',
+        description: 'Maximum export resolution'
+      },
+      {
+        feature: 'Pricing',
+        klippers: '$29/month',
+        alternative: '$12/month',
+        description: 'Starting price for pro plans'
+      },
+      {
+        feature: 'Primary Use',
+        klippers: 'Video Editing',
+        alternative: 'Audio Editing',
+        description: 'Main functionality focus'
+      }
+    ],
+    stats: {
+      speed: '4x Faster',
+      quality: 'Better AI',
+      price: 'Premium Features'
+    }
+  }
+};
+
 const Klippers: React.FC = () => {
   const [counts, setCounts] = useState({
     speed: 10,
@@ -90,6 +468,7 @@ const Klippers: React.FC = () => {
   });
   const [inputBarPosition, setInputBarPosition] = useState('top');
   const [scrollY, setScrollY] = useState(0);
+  const [selectedAlternative, setSelectedAlternative] = useState<string | null>(null);
 
   useEffect(() => {
 
@@ -718,7 +1097,7 @@ const Klippers: React.FC = () => {
           </Grid>
 
           {/* Feature 4: Auto Subtitles */}
-          <Grid container spacing={8} alignItems="center" direction={{ xs: 'column-reverse', md: 'row' }} sx={{ mb: 24 }}>
+          <Grid container spacing={8} alignItems="center" direction={{ xs: 'column-reverse', md: 'row' }} sx={{ mb: 8 }}>
             <Grid item xs={12} md={6}>
               <Box sx={{ bgcolor: 'black', borderRadius: 4, p: 4, height: 400, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography sx={{ color: 'white' }}>Visual 4</Typography>
@@ -737,11 +1116,10 @@ const Klippers: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Trust & Social Proof Section */}
-      <Box id="testimonials-section" sx={{ bgcolor: 'black', py: 16 }}>
+      {/* Stats Section */}
+      <Box id="stats-section" sx={{ bgcolor: 'black', py: 8 }}>
         <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
-          {/* Stats Section (Moved) */}
-          <Box id="stats-section" sx={{ mb: 16 }}>
+          <Box sx={{ mb: 16 }}>
             <Grid container spacing={4} justifyContent="center" alignItems="stretch">
               {/* Stat 1: Blazing Fast */}
               <Grid item xs={12} sm={6} md={3}>
@@ -892,6 +1270,12 @@ const Klippers: React.FC = () => {
               </Grid>
             </Grid>
           </Box>
+        </Container>
+      </Box>
+
+      {/* Trust & Social Proof Section */}
+      <Box id="testimonials-section" sx={{ bgcolor: 'black', py: 8 }}>
+        <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
           <Box sx={{ textAlign: 'center', mb: 12 }}>
             <Typography variant="h2" sx={{ fontWeight: '800', mb: 4, color: 'white' }}>
               Outcome: more <span style={{ color: '#c6f479' }}>happy</span> users!
@@ -1258,6 +1642,119 @@ const Klippers: React.FC = () => {
         </Box>
       )}
 
+      {/* Comparison Table Section */}
+      {selectedAlternative && (
+        <Box sx={{ 
+          bgcolor: 'black', 
+          py: 12
+        }}>
+          <Container maxWidth="lg">
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
+              <Typography variant="h2" sx={{ 
+                fontWeight: '800', 
+                mb: 3,
+                fontSize: { xs: '2.5rem', md: '3.5rem' }
+              }}>
+                Klippers vs {comparisonData[selectedAlternative as keyof typeof comparisonData]?.name}
+              </Typography>
+              <Typography variant="h5" sx={{ 
+                color: '#808080',
+                fontWeight: '300',
+                maxWidth: '800px',
+                mx: 'auto'
+              }}>
+                See why creators choose Klippers over {comparisonData[selectedAlternative as keyof typeof comparisonData]?.name}
+              </Typography>
+            </Box>
+
+
+
+            <TableContainer component={Paper} sx={{ 
+              bgcolor: 'rgba(255, 255, 255, 0.08)',
+              borderRadius: 3,
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              overflow: 'hidden',
+              backdropFilter: 'blur(15px)'
+            }}>
+              <Table>
+                <TableHead>
+                  <TableRow sx={{ bgcolor: 'rgba(255, 255, 255, 0.05)' }}>
+                    <TableCell sx={{ 
+                      color: 'white', 
+                      fontWeight: '600',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                      fontSize: '1.1rem'
+                    }}>
+                      Feature
+                    </TableCell>
+                    <TableCell sx={{ 
+                      color: 'white', 
+                      fontWeight: '600',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                      textAlign: 'center',
+                      fontSize: '1.1rem'
+                    }}>
+                      Klippers
+                    </TableCell>
+                    <TableCell sx={{ 
+                      color: '#808080', 
+                      fontWeight: '600',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                      textAlign: 'center',
+                      fontSize: '1.1rem'
+                    }}>
+                      {comparisonData[selectedAlternative as keyof typeof comparisonData]?.name}
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {comparisonData[selectedAlternative as keyof typeof comparisonData]?.features.map((row, index) => (
+                    <TableRow key={index} sx={{ '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.02)' } }}>
+                      <TableCell sx={{ color: 'white', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        <Box>
+                          <Typography variant="body1" sx={{ fontWeight: '500', mb: 0.5 }}>
+                            {row.feature}
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: '#808080', fontSize: '0.8rem' }}>
+                            {row.description}
+                          </Typography>
+                        </Box>
+                      </TableCell>
+                      <TableCell sx={{ textAlign: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        {typeof row.klippers === 'boolean' ? (
+                          row.klippers ? (
+                            <CheckCircle sx={{ color: '#c6f479', fontSize: 24 }} />
+                          ) : (
+                            <CancelIcon sx={{ color: '#ef4444', fontSize: 24 }} />
+                          )
+                        ) : (
+                          <Typography variant="body2" sx={{ color: '#c6f479', fontWeight: 600 }}>
+                            {row.klippers}
+                          </Typography>
+                        )}
+                      </TableCell>
+                      <TableCell sx={{ textAlign: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                        {typeof row.alternative === 'boolean' ? (
+                          row.alternative ? (
+                            <CheckCircle sx={{ color: '#c6f479', fontSize: 24 }} />
+                          ) : (
+                            <CancelIcon sx={{ color: '#ef4444', fontSize: 24 }} />
+                          )
+                        ) : (
+                          <Typography variant="body2" sx={{ color: '#808080', fontWeight: 500 }}>
+                            {row.alternative}
+                          </Typography>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Container>
+        </Box>
+      )}
+
       {/* Footer */}
         <Box sx={{ 
           bgcolor: 'black', 
@@ -1265,7 +1762,7 @@ const Klippers: React.FC = () => {
           pb: 16 // Extra padding to account for sticky input bar
         }}>
         <Container maxWidth="lg">
-          <Grid container spacing={6} justifyContent="center">
+          <Grid container spacing={6} justifyContent="center" sx={{ textAlign: 'center' }}>
             {/* Product Links */}
             <Grid item xs={12} md={3}>
               <Typography variant="h6" sx={{ 
@@ -1392,7 +1889,7 @@ const Klippers: React.FC = () => {
               </Box>
             </Grid>
 
-            {/* Legal Links */}
+            {/* Alternatives Links */}
             <Grid item xs={12} md={3}>
               <Typography variant="h6" sx={{ 
                 fontWeight: '500', 
@@ -1400,40 +1897,103 @@ const Klippers: React.FC = () => {
                 mb: 3,
                 fontSize: '0.9rem'
               }}>
-                Legal
+                Alternatives
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <Typography variant="body2" sx={{ 
-                  color: '#808080',
-                  cursor: 'cursor',
-                  '&:hover': { color: '#7b5cfa' }
-                }}>
-                  Privacy
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('opus-clip')}
+                  sx={{ 
+                    color: selectedAlternative === 'opus-clip' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Opus Clip
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: '#808080',
-                  cursor: 'pointer',
-                  '&:hover': { color: '#7b5cfa' }
-                }}>
-                  Terms
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('capcut')}
+                  sx={{ 
+                    color: selectedAlternative === 'capcut' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  CapCut
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: '#808080',
-                  cursor: 'pointer',
-                  '&:hover': { color: '#7b5cfa' }
-                }}>
-                  Cookies
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('invideo')}
+                  sx={{ 
+                    color: selectedAlternative === 'invideo' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  InVideo
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: '#808080',
-                  cursor: 'pointer',
-                  '&:hover': { color: '#7b5cfa' }
-                }}>
-                  Licenses
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('pictory')}
+                  sx={{ 
+                    color: selectedAlternative === 'pictory' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Pictory
+                </Typography>
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('synthesia')}
+                  sx={{ 
+                    color: selectedAlternative === 'synthesia' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Synthesia
+                </Typography>
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('lumen5')}
+                  sx={{ 
+                    color: selectedAlternative === 'lumen5' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Lumen5
+                </Typography>
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('veed')}
+                  sx={{ 
+                    color: selectedAlternative === 'veed' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Veed.io
+                </Typography>
+                <Typography 
+                  variant="body2" 
+                  onClick={() => setSelectedAlternative('descript')}
+                  sx={{ 
+                    color: selectedAlternative === 'descript' ? '#c6f479' : '#808080',
+                    cursor: 'pointer',
+                    '&:hover': { color: '#7b5cfa' }
+                  }}
+                >
+                  Descript
                 </Typography>
               </Box>
             </Grid>
           </Grid>
+
+          {/* Comparison Table Section */}
+          
 
           {/* Bottom Footer */}
           <Box sx={{ 
