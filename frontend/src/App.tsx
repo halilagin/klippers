@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from '@/pages/Login';
 import DocumentUpload from '@/pages/DocumentUpload';
 
-import PublicLayout from '@/layouts/PublicLayout';
+
 
 
 import PrepareSignerTemplateMain from './pages/prepare_signer_template/PrepareSignerTemplateMain';
@@ -22,6 +22,10 @@ import KlippersLogin from './pages/KlippersLogin';
 import KlippersPricing from './pages/KlippersPricing';
 import KlippersDashboard from './pages/KlippersDashboard';
 import KlippersShorts from './pages/KlippersShorts';
+import KlippersAccount from './pages/KlippersAccount';
+import KlippersUsage from './pages/KlippersUsage';
+import KlippersBilling from './pages/KlippersBilling';
+import KlippersPaymentForm from './pages/KlippersPaymentForm';
 
 
 function App() {
@@ -44,16 +48,16 @@ function App() {
         <Route path="/prepare-sign-document" element={<PrepareSignerTemplateMain />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/landpage" element={
-          <PublicLayout>
-            <LandPage />
-          </PublicLayout>
-        } />
+     
         <Route path="/klippers" element={<Klippers />} />
         <Route path="/klippers-login" element={<KlippersLogin />} />
         <Route path="/klippers-pricing" element={<KlippersPricing />} />
         <Route path="/klippers-dashboard" element={<KlippersDashboard />} />
         <Route path="/klippers-shorts" element={<KlippersShorts />} />
+        <Route path="/klippers-account" element={<KlippersAccount />} />
+        <Route path="/klippers-usage" element={<KlippersUsage />} />
+        <Route path="/klippers-billing" element={<KlippersBilling />} />
+        <Route path="/klippers-payment" element={<KlippersPaymentForm planId={null} planDetails={null} />} />
       </Routes>
     </Router>
     </>

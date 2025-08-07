@@ -22,9 +22,10 @@ import {
 
 import klippersLogo from '../assets/klippers-logo.png';
 import { Movie, CheckCircle, InfoOutlined } from '@mui/icons-material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const KlippersPricing = () => {
+  const navigate = useNavigate();
   const [period, setPeriod] = React.useState('monthly');
 
   const handlePeriodChange = (
@@ -36,6 +37,23 @@ const KlippersPricing = () => {
     }
   };
   
+  const handleGetStarted = (plan: any) => {
+    const planDetails = {
+      name: plan.name,
+      price: period === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice,
+      priceDetail: period === 'monthly' ? '/month' : '/year'
+    };
+    
+    // Navigate to payment form with plan details
+    navigate('/klippers-payment', { 
+      state: { 
+        planId: plan.name === 'Klippers' ? 'MONTHLY_PAYMENT' : 
+                plan.name === 'Klippers Pro' ? 'VOLUME_BASED_PAYMENT' : 'PAY_AS_YOU_GO',
+        planDetails 
+      } 
+    });
+  };
+
   const plans = [
     {
       name: 'Klippers',
@@ -94,43 +112,79 @@ const KlippersPricing = () => {
       }} />
 
       <AppBar 
-        position="sticky" 
+        position="sticky"
         sx={{ 
-          bgcolor: 'rgba(0, 0, 0, 0.8)', 
-          backdropFilter: 'blur(8px)', 
-          boxShadow: 'none', 
+          bgcolor: 'rgba(0,0,0,0.8)',
+          backdropFilter: 'blur(8px)',
+          zIndex: 1000,
           py: 0.4,
+          transition: 'all 0.3s ease',
+          boxShadow: 'none'
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }} tabIndex={-1}>
-                <img 
-                  src={klippersLogo} 
-                  alt="Klippers Logo" 
-                  style={{ 
-                    width: 80, 
-                    height: 80,
-                    objectFit: 'contain',
-                    marginRight: '8px'
-                  }} 
-                />
-                <Typography variant="h6" sx={{ 
-                  fontWeight: '700', 
-                  color: 'white',
-                  outline: 'none',
-                  '&:focus': {
+          <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <RouterLink to="/klippers" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                  <img 
+                    src={klippersLogo} 
+                    alt="Klippers Logo" 
+                    style={{ 
+                      width: 80, 
+                      height: 80,
+                      objectFit: 'contain'
+                    }} 
+                    tabIndex={-1}
+                    onFocus={(e) => e.target.blur()}
+                  />
+                  <Typography variant="h6" sx={{ 
+                    fontWeight: '800', 
+                    color: 'white',
                     outline: 'none',
-                    boxShadow: 'none'
-                  }
-                }}>
-                  Klippers
-                </Typography>
-              </RouterLink>
+                    '&:focus': {
+                      outline: 'none',
+                      boxShadow: 'none'
+                    }
+                  }}>
+                    Klippers
+                  </Typography>
+                </RouterLink>
+              </Box>
             </Box>
-            {/* Empty Box to balance the layout and align the logo correctly */}
-            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', width: 220 }} />
+
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+              <Button 
+                component={RouterLink}
+                to="/klippers-login"
+                variant="text" 
+                className="button-hover-effect"
+                sx={{ 
+                  borderRadius: 12,
+                  px: 2.5,
+                  py: 0.8,
+                  fontSize: '0.875rem',
+                  color: 'white',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'capitalize',
+                  fontWeight: '600',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&:hover': {
+                    bgcolor: 'rgba(255,255,255,0.15)',
+                    transform: 'translateY(-1px)',
+                    boxShadow: '0 4px 12px rgba(255, 255, 255, 0.2)',
+                  },
+                  '&:focus': {
+                    bgcolor: 'rgba(255,255,255,0.2)',
+                    outline: '2px solid #c6f479',
+                    outlineOffset: '2px',
+                  }
+                }}
+              >
+                Login
+              </Button>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
@@ -150,10 +204,42 @@ const KlippersPricing = () => {
           aria-label="text alignment"
                       sx={{ mb: 6, bgcolor: 'rgba(255, 255, 255, 0.08)', borderRadius: '9999px', p: 0.5, backdropFilter: 'blur(15px)', border: '1px solid rgba(255, 255, 255, 0.15)', boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
         >
-          <ToggleButton value="monthly" aria-label="left aligned" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'monthly' ? 'white' : '#808080', bgcolor: period === 'monthly' ? '#c6f479' : 'transparent' }}>
+          <ToggleButton value="monthly" aria-label="left aligned" sx={{ 
+            borderRadius: '9999px', 
+            border: 'none', 
+            px: 3, 
+            textTransform: 'none', 
+            fontWeight: 600, 
+            color: '#808080',
+            bgcolor: 'transparent',
+            '&.Mui-selected': {
+              bgcolor: '#c6f479',
+              color: 'black',
+              '&:hover': {
+                bgcolor: '#c6f479',
+                color: 'black'
+              }
+            }
+          }}>
             Monthly
           </ToggleButton>
-          <ToggleButton value="yearly" aria-label="centered" sx={{ borderRadius: '9999px', border: 'none', px: 3, textTransform: 'none', fontWeight: 600, color: period === 'yearly' ? 'white' : '#808080', bgcolor: period === 'yearly' ? '#c6f479' : 'transparent' }}>
+          <ToggleButton value="yearly" aria-label="centered" sx={{ 
+            borderRadius: '9999px', 
+            border: 'none', 
+            px: 3, 
+            textTransform: 'none', 
+            fontWeight: 600, 
+            color: '#808080',
+            bgcolor: 'transparent',
+            '&.Mui-selected': {
+              bgcolor: '#c6f479',
+              color: 'black',
+              '&:hover': {
+                bgcolor: '#c6f479',
+                color: 'black'
+              }
+            }
+          }}>
             Yearly <Chip label="Save $190" size="small" sx={{ ml: 1, bgcolor: '#D1FAE5', color: '#065F46' }} />
           </ToggleButton>
         </ToggleButtonGroup>
@@ -183,11 +269,12 @@ const KlippersPricing = () => {
                 <Button 
                   fullWidth 
                   variant="contained" 
+                  onClick={() => handleGetStarted(plan)}
                   sx={{ 
                     my: 3,
                     py: 1.5,
                     borderRadius: '9999px',
-                                        bgcolor: '#fafafa',
+                    bgcolor: '#fafafa',
                     color: 'black',
                     fontWeight: 600,
                     textTransform: 'none',
