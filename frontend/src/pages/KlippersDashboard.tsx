@@ -4,15 +4,11 @@ import {
   Container,
   Typography,
   Button,
-  AppBar,
-  Toolbar,
-  Avatar,
   Paper,
   Chip,
   CircularProgress
 } from '@mui/material';
 
-import klippersLogo from '../assets/klippers-logo.png';
 import { 
   Movie, 
   Upload, 
@@ -23,6 +19,7 @@ import {
   Close
 } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
+import KlippersNavbar from '../components/KlippersNavbar';
 
 const KlippersDashboard = () => {
   const [inputValue, setInputValue] = useState('');
@@ -87,42 +84,7 @@ const KlippersDashboard = () => {
       color: 'white'
     }}>
       {/* Navigation */}
-      <AppBar 
-        position="sticky" 
-        sx={{ 
-          bgcolor: 'rgba(0, 0, 0, 0.8)', 
-          backdropFilter: 'blur(8px)', 
-          boxShadow: 'none', 
-          py: 0.4,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-            {/* Logo */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <img 
-                src={klippersLogo} 
-                alt="Klippers Logo" 
-                style={{ 
-                  width: 80, 
-                  height: 80,
-                  objectFit: 'contain'
-                }} 
-              />
-              <Typography variant="h6" sx={{ fontWeight: '700', color: 'white' }}>
-                Klippers
-              </Typography>
-            </Box>
-
-            {/* Navigation Items */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-              <Avatar sx={{ width: 40, height: 40, bgcolor: '#c6f479' }}>
-                U
-              </Avatar>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      <KlippersNavbar />
 
       {/* Main Content */}
       <Container maxWidth="lg" sx={{ py: 8, flex: 1 }}>
