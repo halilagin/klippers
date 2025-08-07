@@ -86,29 +86,39 @@ const Klippers: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [navbarStyle, setNavbarStyle] = useState({
     bgcolor: 'black',
-    borderColor: '#334155'
+    borderColor: 'transparent'
   });
+  const [inputBarPosition, setInputBarPosition] = useState('top');
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
 
-    // Scroll event listener for navbar style
+    // Scroll event listener for navbar style and input bar position
     const handleScroll = () => {
-      const testimonialsSection = document.getElementById('testimonials-section');
-      if (testimonialsSection) {
-        const rect = testimonialsSection.getBoundingClientRect();
-        const isInTestimonials = rect.top <= 100 && rect.bottom >= 100;
-        
-        if (isInTestimonials) {
-          setNavbarStyle({
-            bgcolor: 'black',
-            borderColor: 'transparent'
-          });
-        } else {
-          setNavbarStyle({
-            bgcolor: 'black',
-            borderColor: '#334155'
-          });
-        }
+      // Handle input bar position
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // If scrolled more than 50% of the page, move input bar to bottom
+      if (currentScrollY > windowHeight * 0.5) {
+        setInputBarPosition('bottom');
+      } else {
+        setInputBarPosition('top');
+      }
+
+      // Handle navbar border - only show when scrolled
+      if (currentScrollY > 50) {
+        setNavbarStyle({
+          bgcolor: 'black',
+          borderColor: 'rgba(255, 255, 255, 0.1)'
+        });
+      } else {
+        setNavbarStyle({
+          bgcolor: 'black',
+          borderColor: 'transparent'
+        });
       }
     };
 
@@ -141,32 +151,33 @@ const Klippers: React.FC = () => {
       <AppBar 
         position="sticky"
         sx={{ 
-          bgcolor: 'rgba(0,0,0,0.8)',
-          backdropFilter: 'blur(8px)',
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 100%)',
+          backdropFilter: 'blur(20px)',
           zIndex: 1000,
-          py: 0.4,
-          transition: 'all 0.3s ease',
-          boxShadow: 'none'
+          py: 0,
+          transition: 'all 0.5s ease-in-out',
+          boxShadow: scrollY > 50 ? '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.05), 0 1px 3px rgba(255, 255, 255, 0.1)' : '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.05)'
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+          <Toolbar disableGutters sx={{ justifyContent: 'space-between', py: 0, minHeight: '40px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <img 
-                src={klippersLogo} 
-                alt="Klippers Logo" 
-                style={{ 
-                  width: 80, 
-                  height: 80,
-                  objectFit: 'contain'
-                }} 
-                tabIndex={-1}
-                onFocus={(e) => e.target.blur()}
-              />
+                                              <img 
+                  src={klippersLogo} 
+                  alt="Klippers Logo" 
+                  style={{ 
+                    width: 50, 
+                    height: 50,
+                    objectFit: 'contain'
+                  }} 
+                  tabIndex={-1}
+                  onFocus={(e) => e.target.blur()}
+                />
                 <Typography variant="h6" sx={{ 
                   fontWeight: '800', 
                   color: 'white',
+                  fontSize: '1.1rem',
                   outline: 'none',
                   '&:focus': {
                     outline: 'none',
@@ -295,7 +306,7 @@ const Klippers: React.FC = () => {
               fontWeight: '900',
             }
           }}>
-            Unleash your <span>videos</span> and unlock <Box sx={{ 
+            Unleash your             <Box sx={{ 
               display: 'inline-block',
               mx: 0.2,
               verticalAlign: 'middle',
@@ -308,19 +319,16 @@ const Klippers: React.FC = () => {
                 color: '#c6f479',
                 position: 'absolute',
                 top: 0,
-                left: 0,
-                animation: 'playArrowFade 3s ease-in-out infinite',
-                '@keyframes playArrowFade': {
-                  '0%, 40%': {
-                    opacity: 1,
-                    transform: 'scale(1)'
-                  },
-                  '50%, 100%': {
-                    opacity: 0,
-                    transform: 'scale(0.8)'
-                  }
-                }
+                left: 0
               }} />
+            </Box> <span>videos</span> and unlock             <Box sx={{ 
+              display: 'inline-block',
+              mx: 0.2,
+              verticalAlign: 'middle',
+              position: 'relative',
+              width: '1.2em',
+              height: '1.2em'
+            }}>
               <img 
                 src={klippersLogo2} 
                 alt="Klippers Logo"
@@ -329,12 +337,7 @@ const Klippers: React.FC = () => {
                   height: '2.2em',
                   position: 'absolute',
                   top: '-0.5em',
-                  left: '-0.5em',
-                  animation: 'fadeIn 3s ease-in-out infinite',
-                }}
-
-                onLoad={(e) => {
-                  (e.target as HTMLImageElement).style.animation = 'fadeIn 3s ease-in-out infinite';
+                  left: '-0.5em'
                 }}
               />
             </Box> <span>viral</span> moments
@@ -349,7 +352,7 @@ const Klippers: React.FC = () => {
           </Typography>
           
           {/* Trusted by section */}
-          <Box sx={{ mb: 6 }}>
+                    <Box sx={{ mb: 6 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
               
               <Typography variant="body2" sx={{ color: '#c6f479', fontWeight: '600' }}>
@@ -358,70 +361,73 @@ const Klippers: React.FC = () => {
             </Box>
           </Box>
 
-          {/* Input Bar */}
-          <Box sx={{ 
-            maxWidth: '500px', 
-            mx: 'auto', 
-            animation: 'fadeInUp 1s ease-out 0.6s both',
-            bgcolor: 'rgba(255, 255, 255, 0.08)',
-            borderRadius: 12,
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1)',
-            p: 1,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 2,
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(15px)',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer',
-            '&:hover': {
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)',
-            }
-          }}>
-            <Upload sx={{ fontSize: 18, color: '#808080' }} />
+          {/* Input Bar - Top Position */}
+          {inputBarPosition === 'top' && (
             <Box sx={{ 
-              flex: 1, 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              color: '#808080'
+              maxWidth: '500px', 
+              mx: 'auto', 
+              animation: 'fadeInUp 1s ease-out 0.6s both',
+              bgcolor: 'rgba(255, 255, 255, 0.08)',
+              borderRadius: 12,
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1)',
+              p: 1,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(15px)',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer',
+              '&:hover': {
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)',
+              }
             }}>
-              <Typography variant="body1" sx={{ color: '#808080', opacity: 0.8 }}>
-                Paste YouTube link or drop a file
-              </Typography>
+              <Upload sx={{ fontSize: 18, color: '#808080' }} />
+              <Box sx={{ 
+                flex: 1, 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                color: '#808080'
+              }}>
+                <Typography variant="body1" sx={{ color: '#808080', opacity: 0.8 }}>
+                  Paste YouTube link or drop a file
+                </Typography>
+              </Box>
+              <Button 
+                variant="contained" 
+                startIcon={<AutoAwesome />}
+                className="button-hover-effect"
+                sx={{ 
+                  borderRadius: 12,
+                  px: 3,
+                  py: 1,
+                  bgcolor: '#fafafa',
+                  color: 'black',
+                  fontWeight: '600',
+                  textTransform: 'none',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&:hover': {
+                    bgcolor: '#ffffff',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 8px 25px rgba(255, 255, 255, 0.3)',
+                  },
+                  '&:focus': {
+                    bgcolor: '#ffffff',
+                    outline: '2px solid #c6f479',
+                    outlineOffset: '2px',
+                    boxShadow: '0 8px 25px rgba(255, 255, 255, 0.4)',
+                  }
+                }}
+              >
+                Generate
+              </Button>
             </Box>
-            <Button 
-              variant="contained" 
-              startIcon={<AutoAwesome />}
-              className="button-hover-effect"
-              sx={{ 
-                borderRadius: 12,
-                px: 3,
-                py: 1,
-                bgcolor: '#fafafa',
-                color: 'black',
-                fontWeight: '600',
-                textTransform: 'none',
-                position: 'relative',
-                overflow: 'hidden',
-                '&:hover': {
-                  bgcolor: '#ffffff',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.3)',
-                },
-                '&:focus': {
-                  bgcolor: '#ffffff',
-                  outline: '2px solid #c6f479',
-                  outlineOffset: '2px',
-                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.4)',
-                }
-              }}
-            >
-              Generate
-            </Button>
+          )}
+ 
           </Box>
-        </Box>
 
         {/* Video Grid */}
         <Box sx={{ 
@@ -1177,10 +1183,86 @@ const Klippers: React.FC = () => {
         </Container>
       </Box>
 
-              {/* Footer */}
+      {/* Sticky Input Bar - Bottom Position */}
+      {inputBarPosition === 'bottom' && (
+        <Box sx={{
+          position: 'fixed',
+          bottom: 20,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1000,
+          maxWidth: '500px',
+          width: '90%'
+        }}>
+          <Box sx={{ 
+            bgcolor: 'rgba(255, 255, 255, 0.08)',
+            borderRadius: 12,
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1)',
+            p: 1,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2,
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(15px)',
+            transition: 'all 0.3s ease',
+            cursor: 'pointer',
+            '&:hover': {
+              border: '1px solid rgba(255, 255, 255, 0.4)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)',
+            }
+          }}>
+            <Upload sx={{ fontSize: 18, color: '#808080' }} />
+            <Box sx={{ 
+              flex: 1, 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              color: '#808080'
+            }}>
+              <Typography variant="body1" sx={{ color: '#808080', opacity: 0.8 }}>
+                Paste YouTube link or drop a file
+              </Typography>
+            </Box>
+            <Button 
+              component={RouterLink}
+              to="/klippers-trial"
+              variant="contained" 
+              startIcon={<AutoAwesome />}
+              className="button-hover-effect"
+              sx={{ 
+                borderRadius: 12,
+                px: 3,
+                py: 1,
+                bgcolor: '#fafafa',
+                color: 'black',
+                fontWeight: '600',
+                textTransform: 'none',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:hover': {
+                  bgcolor: '#ffffff',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.3)',
+                },
+                '&:focus': {
+                  bgcolor: '#ffffff',
+                  outline: '2px solid #c6f479',
+                  outlineOffset: '2px',
+                  boxShadow: '0 8px 25px rgba(255, 255, 255, 0.4)',
+                }
+              }}
+            >
+              Generate
+            </Button>
+          </Box>
+        </Box>
+      )}
+
+      {/* Footer */}
         <Box sx={{ 
           bgcolor: 'black', 
-          py: 12
+          py: 12,
+          pb: 16 // Extra padding to account for sticky input bar
         }}>
         <Container maxWidth="lg">
           <Grid container spacing={6} justifyContent="center">

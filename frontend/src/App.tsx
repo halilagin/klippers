@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import Login from '@/pages/Login';
-import DocumentUpload from '@/pages/DocumentUpload';
+
 
 
 
@@ -26,6 +26,7 @@ import KlippersAccount from './pages/KlippersAccount';
 import KlippersUsage from './pages/KlippersUsage';
 import KlippersBilling from './pages/KlippersBilling';
 import KlippersPaymentForm from './pages/KlippersPaymentForm';
+import KlippersTrial from './pages/KlippersTrial';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         <Route path="/subscriptions" element={<ManageSubscription />} />
 
         {/* Individual Routes */}
-        <Route path="/document-upload" element={<DocumentUpload />} />
+      
         <Route path="/prepare-sign-document" element={<PrepareSignerTemplateMain />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
@@ -58,6 +59,7 @@ function App() {
         <Route path="/klippers-usage" element={<KlippersUsage />} />
         <Route path="/klippers-billing" element={<KlippersBilling />} />
         <Route path="/klippers-payment" element={<KlippersPaymentForm planId={null} planDetails={null} />} />
+        <Route path="/klippers-trial" element={<KlippersTrial />} />
       </Routes>
     </Router>
     </>
