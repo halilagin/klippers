@@ -33,12 +33,27 @@ import {
 } from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
+import ShortVariation from '../components/ShortVariation';
 
 const KlippersShorts = () => {
   const [selectedShort, setSelectedShort] = useState(0);
   const [openPublishModal, setOpenPublishModal] = useState(false);
   const [openGenerateModal, setOpenGenerateModal] = useState(false);
   const [topicInput, setTopicInput] = useState('');
+
+  const handlePublish = () => {
+    setOpenPublishModal(true);
+  };
+
+  const handleEdit = () => {
+    // Handle edit functionality
+    console.log('Edit clicked');
+  };
+
+  const handleDownload = () => {
+    // Handle download functionality
+    console.log('Download clicked');
+  };
 
   const shorts = [
     {
@@ -51,19 +66,19 @@ const KlippersShorts = () => {
     },
     {
       id: 2,
-      title: "Mastering dance fundamentals (00:38)",
+      title: "Building confidence through dance practice (00:38)",
       viralityScore: 78,
-      transcript: "The fundamentals are everything. When you master the basics, everything else becomes easier. It's like building a house - you need a solid foundation first.",
-      viralityDescription: "Strong educational content with clear value proposition. The message is universal and applicable across different dance styles.",
-      previewUrl: "https://cdn.midjourney.com/video/45213149-21f4-447f-bacd-946c881aea16/1.mp4"
+      transcript: "Confidence comes from practice. When you practice something over and over again, you start to feel more comfortable with it. In tango, this means practicing your steps, your posture, your connection with your partner. The more you practice, the more confident you become, and the more you can express yourself through the dance. It's not about being perfect, it's about being comfortable with who you are and what you can do.",
+      viralityDescription: "This short focuses on the universal theme of building confidence through practice, which appeals to a broad audience beyond just dancers. The message is motivational and actionable, encouraging viewers to apply the concept to their own lives. The personal experience adds credibility and relatability.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/4.mp4"
     },
     {
       id: 3,
-      title: "Building confidence through practice (00:45)",
+      title: "The power of community in dance learning (00:45)",
       viralityScore: 92,
-      transcript: "Confidence comes from practice. Every time you step on the dance floor, you're building that confidence muscle. Don't be afraid to make mistakes.",
-      viralityDescription: "Highly motivational content that addresses common fears. The emotional appeal and practical advice make this highly shareable.",
-      previewUrl: "https://cdn.midjourney.com/video/b9430049-8e96-4a0e-ad88-8e305b6201ce/1.mp4"
+      transcript: "The tango community is incredible. When you're learning, everyone is so supportive. More experienced dancers are always willing to help beginners, share tips, and encourage them to keep going. This sense of community makes the learning process so much more enjoyable and less intimidating. It's not just about the dance itself, it's about the people you meet and the connections you make along the way.",
+      viralityDescription: "This video highlights the social and community aspects of dance, which can resonate with viewers who value human connection and support networks. The positive message about community support is universally appealing and can inspire viewers to seek out similar communities in their own interests.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/5.mp4"
     }
   ];
 
@@ -254,236 +269,18 @@ const KlippersShorts = () => {
           </Button>
         </Box>
 
-                        {/* Content Grid */}
-        <Grid container spacing={8}>
-                      {/* First Variation */}
-          <Grid item xs={12} lg={4}>
-            {/* Video Container */}
-            <Box sx={{
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2,
-              aspectRatio: '9/16',
-              bgcolor: 'rgba(255, 255, 255, 0.08)',
-              borderRadius: 12,
-              overflow: 'hidden',
-              position: 'relative',
-              mb: 3,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(15px)',
-              boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
-            }}>
-              <Typography variant="body2" sx={{ color: '#808080' }}>
-                Video Preview Container
-              </Typography>
-            </Box>
-
-            {/* Action Buttons */}
-            <Box sx={{
-              display: 'flex',
-              gap: 2,
-              mb: 3,
-              width: '85%',
-              maxWidth: 320,
-              mx: 0,
-              ml: 2
-            }}>
-                              <Button 
-                  variant="contained" 
-                  sx={{ 
-                    bgcolor: '#fafafa',
-                    color: 'black',
-                    borderRadius: 12,
-                    py: 1.6,
-                    px: 1.5,
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    textTransform: 'none',
-                    flex: 1,
-                    boxShadow: 'none',
-                    '&:hover': {
-                      bgcolor: '#ffffff',
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
-                    }
-                  }}
-                >
-                  Download HD
-                </Button>
-              <Tooltip 
-                title="Publish" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: 'rgba(255, 255, 255, 0.08)',
-                    color: 'white',
-                    borderRadius: 12,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(15px)',
-                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)',
-                    '&:hover': {
-                      bgcolor: 'rgba(255, 255, 255, 0.15)',
-                      color: '#c6f479',
-                      boxShadow: '0 0 25px rgba(255, 255, 255, 0.2)'
-                    }
-                  }}
-                  onClick={() => setOpenPublishModal(true)}
-                >
-                  <Publish sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-              <Tooltip 
-                title="Edit" 
-                placement="top" 
-                arrow
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      fontSize: '0.85rem',
-                      px: 1.5,
-                      py: 0.5,
-                      minWidth: 0,
-                      borderRadius: 1.5
-                    }
-                  }
-                }}
-              >
-                <Button 
-                  variant="text" 
-                  sx={{ 
-                    bgcolor: 'rgba(255, 255, 255, 0.08)',
-                    color: 'white',
-                    borderRadius: 12,
-                    px: 1.5,
-                    py: 1.6,
-                    minWidth: 'auto',
-                    width: 48,
-                    height: 48,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(15px)',
-                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)',
-                    '&:hover': {
-                      bgcolor: 'rgba(255, 255, 255, 0.15)',
-                      color: '#c6f479',
-                      boxShadow: '0 0 25px rgba(255, 255, 255, 0.2)'
-                    }
-                  }}
-                >
-                  <Edit sx={{ fontSize: 16 }} />
-                </Button>
-              </Tooltip>
-            </Box>
-
-            <Box sx={{ 
-              width: '85%',
-              maxWidth: 280,
-              mx: 0,
-              ml: 2,
-              textAlign: 'center'
-            }}>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block'
-              }}>
-                Video appear glitchy? Don't worry, it
-              </Typography>
-              <Typography variant="caption" sx={{ 
-                color: '#6B7280', 
-                fontStyle: 'normal',
-                fontWeight: '400',
-                fontSize: '0.9rem',
-                lineHeight: 1.4,
-                display: 'block',
-                pl: 2
-              }}>
-                won't when you download it.
-              </Typography>
-            </Box>
-          </Grid>
-
-          {/* First Variation Content */}
-          <Grid item xs={12} lg={8}>
-            <Box sx={{ 
-              height: '100%', 
-              display: 'flex', 
-              flexDirection: 'column',
-              maxHeight: 'calc(70vw * 16/9)',
-              overflow: 'hidden'
-            }}>
-              <Box sx={{ 
-                flex: 1, 
-                overflow: 'auto',
-                pr: 2
-              }}>
-                <Typography variant="h5" sx={{ fontWeight: '700', color: 'white', mb: 3 }}>
-                  {shorts[0].title}
-                </Typography>
-
-                {/* Virality Score */}
-                <Box sx={{ mb: 4 }}>
-                  <Box sx={{ 
-                    bgcolor: 'rgba(255, 255, 255, 0.08)',
-                    p: 3,
-                    borderRadius: 4,
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(15px)',
-                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
-                  }}>
-                    <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', fontSize: '1rem' }}>
-                      #1 Virality score ({shorts[0].viralityScore}/100)
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1rem', fontWeight: '300' }}>
-                      {shorts[0].viralityDescription}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Transcript */}
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2, fontSize: '1rem' }}>
-                    Transcript
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '300' }}>
-                    {shorts[0].transcript}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Grid>
-          </Grid>
+        {/* Content Grid */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {shorts.map((short, index) => (
+            <ShortVariation
+              key={short.id}
+              short={short}
+              onPublish={handlePublish}
+              onEdit={handleEdit}
+              onDownload={handleDownload}
+            />
+          ))}
+        </Box>
 
        
         </Container>
