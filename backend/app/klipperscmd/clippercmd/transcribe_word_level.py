@@ -117,7 +117,7 @@ def _combine_word_level_srt_files(srt_files, output_path):
 
 def _transcribe_audio_file_word_level(audio_file, output_srt_file, settings, words_per_subtitle=4):
     """Transcribes an audio file and generates word-level SRT file using OpenAI API."""
-    client = openai.OpenAI(api_key=settings.openai_api_key)
+    client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
     output_dir = os.path.dirname(output_srt_file)
     if not output_dir:

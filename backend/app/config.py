@@ -26,10 +26,6 @@ class Settings(BaseSettings):
     ACTIVATE_STRIPE_METERING: bool = True
     ACTIVATE_SIGNING_PDF: bool = True
     ACTIVATE_PSQL_BACKUP: bool = False
-    PDF_SIGNER_PRIVATE_KEY_PATH: str
-    PDF_SIGNER_CERTIFICATE_PATH: str
-    PDF_SIGNER_PFX_PATH: str
-    PDF_SIGNER_PFX_PASSWORD: str
     DB_BACKUP_CONTAINER_NAME: str
     DB_BACKUP_DB_NAME: str
     DB_BACKUP_DB_USER: str
@@ -42,6 +38,9 @@ class Settings(BaseSettings):
     VIDEO_WAREHOUSE_ROOT_DIR: str
     BACKEND_WORKING_DIR: str
     SEGMENT_COUNT: int
+    OPENAI_API_KEY: str
+    KLIPPERS_RUN_SCRIPT: str
+    KLIPPERS_CMD_CLIPPER_PY: str
 
     class Config:
         env_file = ".env"

@@ -9,7 +9,7 @@ from .utils import (
 
 def _transcribe_audio_file(audio_file, output_srt_file, settings):
     """Transcribes an audio file and generates an SRT file using OpenAI API."""
-    client = openai.OpenAI(api_key=settings.openai_api_key)
+    client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
     output_dir = os.path.dirname(output_srt_file)
     if not output_dir:

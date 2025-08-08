@@ -1,5 +1,5 @@
 # Use Python 3.11 slim image as base (explicit Debian variant for multi-arch)
-FROM halilagin/klippersai
+FROM halilagin/klippersai:latest
 
 # Set working directory
 WORKDIR /app
@@ -8,7 +8,12 @@ COPY . .
 
 # Install Python dependencies (main group only) non-interactively
 RUN poetry config virtualenvs.create false && rm -f poetry.lock && \
-    poetry install  
+    poetry install && \
+    pip install --upgrade pip && \
+    pip install --upgrade setuptools
+    
+    
+    
 
 # Copy the rest of the application code
 RUN cp .env.docker .env

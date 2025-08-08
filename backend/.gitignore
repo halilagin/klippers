@@ -1,3 +1,5 @@
+#this is generated via docker container
+klippers_warehouse
 secrets
 app.db.backup
 # Python

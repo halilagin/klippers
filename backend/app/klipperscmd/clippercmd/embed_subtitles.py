@@ -1,5 +1,4 @@
 import click
-import cv2
 import os
 from .utils import _run_ffmpeg
 
@@ -30,14 +29,23 @@ def _validate_files(video_file, srt_file):
 
 def _get_video_dimensions(video_file):
     """Get video dimensions using OpenCV."""
+    try:
+        import cv2  # Lazy import to avoid hard dependency when not needed
+    except Exception as import_error:
+        raise click.ClickException(
+            "OpenCV is required for determining video dimensions. "
+            "Please ensure OpenCV is installed and system libs are present (e.g., libGL).\n"
+            "On Debian/Ubuntu images: apt-get install -y libgl1 libglib2.0-0 libsm6 libxext6 libxrender1"
+        ) from import_error
+
     cap = cv2.VideoCapture(video_file)
     if not cap.isOpened():
         raise ValueError(f"Could not open video file: {video_file}")
-    
+
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     cap.release()
-    
+
     return width, height
 
 

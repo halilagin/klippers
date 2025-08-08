@@ -4,12 +4,7 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies including build tools
-RUN apt-get update && apt-get install -y \
-		libssl-dev \
-    curl \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+
 
 # Install poetry and add to PATH
 ENV POETRY_HOME=/opt/poetry

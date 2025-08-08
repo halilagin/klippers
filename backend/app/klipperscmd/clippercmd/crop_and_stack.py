@@ -1,7 +1,10 @@
 # flake8: noqa: E501
 # clipper/clippercmd/crop_and_stack.py
 
-import cv2
+try:
+    import cv2
+except Exception as cv2_import_error:
+    cv2 = None
 import face_recognition
 import numpy as np
 import click
@@ -52,6 +55,10 @@ def _attach_audio_with_ffmpeg(input_video_path, video_without_audio_path, final_
         return False
 
 def _crop_and_stack(input_video_path, output_video_path):
+    if cv2 is None:
+        raise click.ClickException(
+            "OpenCV is required for crop-and-stack. Please ensure OpenCV and system libs are installed."
+        )
     cap = cv2.VideoCapture(input_video_path)
     if not cap.isOpened():
         print("Error: Could not open video.")

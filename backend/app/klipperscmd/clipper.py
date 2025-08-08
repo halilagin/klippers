@@ -26,7 +26,7 @@ def cli(ctx):
     It uses a .env file in the same directory to load the OPENAI_API_KEY.
     """
     ctx.obj = Settings()
-    if not ctx.obj.openai_api_key:
+    if not ctx.obj.OPENAI_API_KEY:
         raise click.UsageError(
             "API key not found. Make sure you have a .env file with "
             "OPENAI_API_KEY defined, or that the environment variable is set."

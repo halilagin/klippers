@@ -166,7 +166,7 @@ def _combine_word_level_ass_files(ass_files, output_path):
 
 def _transcribe_audio_file_word_level_ass(audio_file, output_ass_file, settings, words_per_subtitle=4):
     """Transcribes an audio file and generates word-level ASS file with karaoke highlighting."""
-    client = openai.OpenAI(api_key=settings.openai_api_key)
+    client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
     output_dir = os.path.dirname(output_ass_file)
     if not output_dir:
