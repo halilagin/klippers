@@ -30,6 +30,8 @@ venv/
 env/
 ENV/
 .env
+.env.docker
+.env.local
 .venv
 .python-version
 
