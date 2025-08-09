@@ -34,263 +34,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import ShortVariation from '../components/ShortVariation';
 import KlippersNavbar from '../components/KlippersNavbar';
 
-
-
-interface KlipperShortModel {
-  id: number;
-  title: string;
-  viralityScore: number;
-  transcript: string;
-  viralityDescription: string;
-  previewUrl: string;
-}
-
-interface KlipperShortProps {
-  short: KlipperShortModel;
-  onPublish: () => void;
-  onEdit: () => void;
-  onDownload: () => void;
-}
-
-const shorts: KlipperShortModel[] = [
-    {
-      id: 1,
-      title: "The importance of curiosity in learning dance (00:41)",
-      viralityScore: 85,
-      transcript: "Next one is to be curious. When I started doing tango, I was really curious into what are the different ways that I can break down a step, what are the different ways I can do this, can I do this in reverse, can I do this with the other foot, can I do this with the other side of the embrace, that kind of thing. Being curious is another aspect which I think is really, really important because you don't just copy, or you're not just copying what the teacher is showing you, you're making the dance your own. And that's what the result of being curious is, it's really making the dance your own.",
-      viralityDescription: "This video promotes a relatable and inspiring message about curiosity in dance, which can resonate with a wide audience. The personal storytelling aspect adds authenticity, and the practical tips encourage viewer engagement. However, the lack of visual elements or dynamic editing may limit its overall appeal.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/3.mp4"
-    },
-    {
-      id: 2,
-      title: "Building confidence through dance practice (00:38)",
-      viralityScore: 78,
-      transcript: "Confidence comes from practice. When you practice something over and over again, you start to feel more comfortable with it. In tango, this means practicing your steps, your posture, your connection with your partner. The more you practice, the more confident you become, and the more you can express yourself through the dance. It's not about being perfect, it's about being comfortable with who you are and what you can do.",
-      viralityDescription: "This short focuses on the universal theme of building confidence through practice, which appeals to a broad audience beyond just dancers. The message is motivational and actionable, encouraging viewers to apply the concept to their own lives. The personal experience adds credibility and relatability.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/4.mp4"
-    },
-    {
-      id: 3,
-      title: "The power of community in dance learning (00:45)",
-      viralityScore: 92,
-      transcript: "The tango community is incredible. When you're learning, everyone is so supportive. More experienced dancers are always willing to help beginners, share tips, and encourage them to keep going. This sense of community makes the learning process so much more enjoyable and less intimidating. It's not just about the dance itself, it's about the people you meet and the connections you make along the way.",
-      viralityDescription: "This video highlights the social and community aspects of dance, which can resonate with viewers who value human connection and support networks. The positive message about community support is universally appealing and can inspire viewers to seek out similar communities in their own interests.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/5.mp4"
-    }
-  ];
-
-
-
-const KlippersShort = (props: KlipperShortProps) => {
-  const { short, onPublish, onEdit, onDownload } = props;
-
-  return (
-    <Grid container spacing={8}>
-      {/* Video Preview Column */}
-      <Grid item xs={12} lg={4}>
-        {/* Video Container */}
-        <Box sx={{
-          width: '85%',
-          maxWidth: 320,
-          mx: 0,
-          ml: 2,
-          aspectRatio: '9/16',
-          bgcolor: 'rgba(255, 255, 255, 0.08)',
-          borderRadius: 12,
-          overflow: 'hidden',
-          position: 'relative',
-          mb: 3,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
-          backdropFilter: 'blur(15px)',
-          boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
-        }}>
-          {short.previewUrl ? (
-            <video
-              src={short.previewUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center'
-              }}
-            />
-          ) : (
-            <Typography variant="body2" sx={{ color: '#808080' }}>
-              Video Preview Container
-            </Typography>
-          )}
-        </Box>
-
-        {/* Action Buttons */}
-        <Box sx={{ 
-          display: 'flex', 
-          gap: 1.5, 
-          justifyContent: 'center',
-          width: '85%',
-          maxWidth: 320,
-          mx: 0,
-          ml: 2,
-          mb: 2
-        }}>
-          <Button
-            variant="contained"
-            startIcon={<Publish />}
-            onClick={onPublish}
-            sx={{
-              bgcolor: '#c6f479',
-              color: 'black',
-              fontWeight: '600',
-              textTransform: 'none',
-              borderRadius: 2,
-              px: 2,
-              py: 1,
-              fontSize: '0.875rem',
-              '&:hover': {
-                bgcolor: '#b8e66a'
-              }
-            }}
-          >
-            Publish
-          </Button>
-          
-          <Button
-            variant="outlined"
-            startIcon={<Edit />}
-            onClick={onEdit}
-            sx={{
-              borderColor: 'rgba(255, 255, 255, 0.3)',
-              color: 'white',
-              fontWeight: '600',
-              textTransform: 'none',
-              borderRadius: 2,
-              px: 2,
-              py: 1,
-              fontSize: '0.875rem',
-              '&:hover': { 
-                borderColor: 'white',
-                bgcolor: 'rgba(255, 255, 255, 0.1)'
-              }
-            }}
-          >
-            Edit
-          </Button>
-          
-          <Button
-            variant="outlined"
-            startIcon={<GetApp />}
-            onClick={onDownload}
-            sx={{
-              borderColor: 'rgba(255, 255, 255, 0.3)',
-              color: 'white',
-              fontWeight: '600',
-              textTransform: 'none',
-              borderRadius: 2,
-              px: 2,
-              py: 1,
-              fontSize: '0.875rem',
-              '&:hover': { 
-                borderColor: 'white',
-                bgcolor: 'rgba(255, 255, 255, 0.1)'
-              }
-            }}
-          >
-            Download
-          </Button>
-        </Box>
-
-        <Box sx={{ 
-          width: '85%',
-          maxWidth: 280,
-          mx: 0,
-          ml: 2,
-          textAlign: 'center'
-        }}>
-          <Typography variant="caption" sx={{ 
-            color: '#6B7280', 
-            fontStyle: 'normal',
-            fontWeight: '400',
-            fontSize: '0.9rem',
-            lineHeight: 1.4,
-            display: 'block'
-          }}>
-            Video appear glitchy? Don't worry, it
-          </Typography>
-          <Typography variant="caption" sx={{ 
-            color: '#6B7280', 
-            fontStyle: 'normal',
-            fontWeight: '400',
-            fontSize: '0.9rem',
-            lineHeight: 1.4,
-            display: 'block',
-            pl: 2
-          }}>
-            won't when you download it.
-          </Typography>
-        </Box>
-      </Grid>
-
-      {/* Content Column */}
-      <Grid item xs={12} lg={8}>
-        <Box sx={{ 
-          height: '100%', 
-          display: 'flex', 
-          flexDirection: 'column',
-          maxHeight: 'calc(70vw * 16/9)',
-          overflow: 'hidden'
-        }}>
-          <Box sx={{ 
-            flex: 1, 
-            overflow: 'auto',
-            pr: 2
-          }}>
-            <Typography variant="h5" sx={{ fontWeight: '700', color: 'white', mb: 3 }}>
-              {short.title}
-            </Typography>
-
-            {/* Virality Score */}
-            <Box sx={{ mb: 4 }}>
-              <Box sx={{ 
-                bgcolor: 'rgba(255, 255, 255, 0.08)',
-                p: 3,
-                borderRadius: 4,
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                backdropFilter: 'blur(15px)',
-                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
-              }}>
-                <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', fontSize: '1rem' }}>
-                  #{short.id} Virality score ({short.viralityScore}/100)
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1rem', fontWeight: '300' }}>
-                  {short.viralityDescription}
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Transcript */}
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2, fontSize: '1rem' }}>
-                Transcript
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#808080', lineHeight: 1.6, fontSize: '1.1rem', fontWeight: '300' }}>
-                {short.transcript}
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-      </Grid>
-    </Grid>
-  );
-}
-
-
-const KlippersShorts = () => {
+const KlippersShortsOld = () => {
   const location = useLocation();
   const [selectedShort, setSelectedShort] = useState(0);
   const [openPublishModal, setOpenPublishModal] = useState(false);
@@ -301,7 +45,7 @@ const KlippersShorts = () => {
   const isAccountPage = location.pathname === '/klippers-account';
   const isUsagePage = location.pathname === '/klippers-usage';
   const isBillingPage = location.pathname === '/klippers-billing';
-  const isShortsPage = location.pathname === '/klippers-shorts';
+  const isShortsPage = location.pathname === '/klippers-shorts-old';
 
   const handlePublish = () => {
     setOpenPublishModal(true);
@@ -347,6 +91,33 @@ const KlippersShorts = () => {
   };
 
   const pageInfo = getPageInfo();
+
+  const shorts = [
+    {
+      id: 1,
+      title: "The importance of curiosity in learning dance (00:41)",
+      viralityScore: 85,
+      transcript: "Next one is to be curious. When I started doing tango, I was really curious into what are the different ways that I can break down a step, what are the different ways I can do this, can I do this in reverse, can I do this with the other foot, can I do this with the other side of the embrace, that kind of thing. Being curious is another aspect which I think is really, really important because you don't just copy, or you're not just copying what the teacher is showing you, you're making the dance your own. And that's what the result of being curious is, it's really making the dance your own.",
+      viralityDescription: "This video promotes a relatable and inspiring message about curiosity in dance, which can resonate with a wide audience. The personal storytelling aspect adds authenticity, and the practical tips encourage viewer engagement. However, the lack of visual elements or dynamic editing may limit its overall appeal.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/3.mp4"
+    },
+    {
+      id: 2,
+      title: "Building confidence through dance practice (00:38)",
+      viralityScore: 78,
+      transcript: "Confidence comes from practice. When you practice something over and over again, you start to feel more comfortable with it. In tango, this means practicing your steps, your posture, your connection with your partner. The more you practice, the more confident you become, and the more you can express yourself through the dance. It's not about being perfect, it's about being comfortable with who you are and what you can do.",
+      viralityDescription: "This short focuses on the universal theme of building confidence through practice, which appeals to a broad audience beyond just dancers. The message is motivational and actionable, encouraging viewers to apply the concept to their own lives. The personal experience adds credibility and relatability.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/4.mp4"
+    },
+    {
+      id: 3,
+      title: "The power of community in dance learning (00:45)",
+      viralityScore: 92,
+      transcript: "The tango community is incredible. When you're learning, everyone is so supportive. More experienced dancers are always willing to help beginners, share tips, and encourage them to keep going. This sense of community makes the learning process so much more enjoyable and less intimidating. It's not just about the dance itself, it's about the people you meet and the connections you make along the way.",
+      viralityDescription: "This video highlights the social and community aspects of dance, which can resonate with viewers who value human connection and support networks. The positive message about community support is universally appealing and can inspire viewers to seek out similar communities in their own interests.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/5.mp4"
+    }
+  ];
 
   return (
     <Box sx={{
@@ -508,7 +279,7 @@ const KlippersShorts = () => {
         {isShortsPage && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {shorts.map((short, index) => (
-              <KlippersShort
+              <ShortVariation
                 key={short.id}
                 short={short}
                 onPublish={handlePublish}
@@ -519,9 +290,349 @@ const KlippersShorts = () => {
           </Box>
         )}
 
-      </Container>
+        {/* Account Page Content */}
+        {isAccountPage && (
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={8}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Typography variant="h5" sx={{ fontWeight: '700', color: 'white', mb: 3 }}>
+                  Profile Information
+                </Typography>
+                
+                <Box sx={{ mb: 4 }}>
+                  <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2 }}>
+                    Personal Details
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    Name: User Name
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    Email: user@example.com
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080' }}>
+                    Member since: January 2024
+                  </Typography>
+                </Box>
 
-      {/* Publish Modal */}
+                <Divider sx={{ my: 3, borderColor: 'rgba(255, 255, 255, 0.15)' }} />
+
+                <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2 }}>
+                  Account Settings
+                </Typography>
+                <Typography variant="body1" sx={{ color: '#808080' }}>
+                  Manage your account preferences, privacy settings, and notification preferences here.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 3,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2 }}>
+                  Quick Actions
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#808080' }}>
+                  Common account management tasks and settings.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        )}
+
+        {/* Usage Page Content */}
+        {isUsagePage && (
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Typography variant="h5" sx={{ fontWeight: '700', color: 'white', mb: 3 }}>
+                  Current Month Usage
+                </Typography>
+                
+                <Box sx={{ mb: 4 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                    <Typography variant="body1" sx={{ color: '#808080' }}>
+                      Videos Processed
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'white', fontWeight: '600' }}>
+                      12 / 50
+                    </Typography>
+                  </Box>
+                  <LinearProgress 
+                    variant="determinate" 
+                    value={24} 
+                    sx={{ 
+                      height: 8, 
+                      borderRadius: 4,
+                      bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      '& .MuiLinearProgress-bar': {
+                        bgcolor: '#c6f479'
+                      }
+                    }} 
+                  />
+                </Box>
+
+                <Box sx={{ mb: 4 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                    <Typography variant="body1" sx={{ color: '#808080' }}>
+                      Shorts Generated
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'white', fontWeight: '600' }}>
+                      8 / 25
+                    </Typography>
+                  </Box>
+                  <LinearProgress 
+                    variant="determinate" 
+                    value={32} 
+                    sx={{ 
+                      height: 8, 
+                      borderRadius: 4,
+                      bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      '& .MuiLinearProgress-bar': {
+                        bgcolor: '#c6f479'
+                      }
+                    }} 
+                  />
+                </Box>
+
+                <Box>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                    <Typography variant="body1" sx={{ color: '#808080' }}>
+                      Storage Used
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'white', fontWeight: '600' }}>
+                      2.4 GB / 10 GB
+                    </Typography>
+                  </Box>
+                  <LinearProgress 
+                    variant="determinate" 
+                    value={24} 
+                    sx={{ 
+                      height: 8, 
+                      borderRadius: 4,
+                      bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      '& .MuiLinearProgress-bar': {
+                        bgcolor: '#c6f479'
+                      }
+                    }} 
+                  />
+                </Box>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Typography variant="h5" sx={{ fontWeight: '700', color: 'white', mb: 3 }}>
+                  Usage History
+                </Typography>
+                
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 1 }}>
+                    Last 30 Days
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    • 12 videos processed
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    • 8 shorts generated
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080' }}>
+                    • 2.4 GB storage used
+                  </Typography>
+                </Box>
+
+                <Box>
+                  <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 1 }}>
+                    Plan Limits
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080' }}>
+                    You're on the Pro plan with generous limits for video processing and storage.
+                  </Typography>
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        )}
+
+        {/* Billing Page Content */}
+        {isBillingPage && (
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={8}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+                  <Typography variant="h5" sx={{ fontWeight: '700', color: 'white' }}>
+                    Current Plan
+                  </Typography>
+                  <Chip 
+                    label="Pro Plan" 
+                    sx={{ 
+                      bgcolor: '#c6f479',
+                      color: 'black',
+                      fontWeight: '600',
+                      fontSize: '0.9rem'
+                    }} 
+                  />
+                </Box>
+                
+                <Box sx={{ mb: 4 }}>
+                  <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 2 }}>
+                    Plan Details
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    • $29/month
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    • 50 videos per month
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 2 }}>
+                    • 25 shorts generated
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#808080' }}>
+                    • 10 GB storage
+                  </Typography>
+                </Box>
+
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                  <Button 
+                    variant="contained" 
+                    sx={{ 
+                      bgcolor: '#c6f479',
+                      color: 'black',
+                      fontWeight: '600',
+                      textTransform: 'none',
+                      px: 3,
+                      py: 1.5,
+                      borderRadius: 2,
+                      '&:hover': {
+                        bgcolor: '#b8e66a'
+                      }
+                    }}
+                  >
+                    Upgrade Plan
+                  </Button>
+                  <Button 
+                    variant="outlined" 
+                    sx={{ 
+                      borderColor: 'rgba(255, 255, 255, 0.3)',
+                      color: 'white',
+                      textTransform: 'none',
+                      px: 3,
+                      py: 1.5,
+                      borderRadius: 2,
+                      '&:hover': {
+                        borderColor: 'white',
+                        bgcolor: 'rgba(255, 255, 255, 0.1)'
+                      }
+                    }}
+                  >
+                    Cancel Subscription
+                  </Button>
+                </Box>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)'
+              }}>
+                <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 3 }}>
+                  Payment Method
+                </Typography>
+                
+                <Box sx={{ mb: 3 }}>
+                  <Typography variant="body1" sx={{ color: '#808080', mb: 1 }}>
+                    Visa ending in 4242
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#666' }}>
+                    Expires 12/25
+                  </Typography>
+                </Box>
+
+                <Button 
+                  variant="outlined" 
+                  fullWidth
+                  sx={{ 
+                    borderColor: 'rgba(255, 255, 255, 0.3)',
+                    color: 'white',
+                    textTransform: 'none',
+                    py: 1.5,
+                    borderRadius: 2,
+                    '&:hover': {
+                      borderColor: 'white',
+                      bgcolor: 'rgba(255, 255, 255, 0.1)'
+                    }
+                  }}
+                >
+                  Update Payment Method
+                </Button>
+              </Paper>
+
+              <Paper sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+                p: 4,
+                borderRadius: 3,
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                mt: 3
+              }}>
+                <Typography variant="h6" sx={{ fontWeight: '600', color: 'white', mb: 3 }}>
+                  Next Billing
+                </Typography>
+                
+                <Typography variant="body1" sx={{ color: 'white', fontWeight: '600', mb: 1 }}>
+                  January 15, 2024
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#808080' }}>
+                  $29.00
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        )}
+
+       
+        </Container>
+
+     
       <Modal
         open={openPublishModal}
         onClose={() => setOpenPublishModal(false)}
@@ -915,7 +1026,7 @@ const KlippersShorts = () => {
           </Box>
 
           {/* Topic Suggestions */}
-          <Box sx={{ mb: 4, bgcolor: 'rgba(227, 232, 239, 0.3)', borderRadius: 12, p: 3 }}>
+                      <Box sx={{ mb: 4, bgcolor: 'rgba(227, 232, 239, 0.3)', borderRadius: 12, p: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: '600', color: '#1F2937', mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
               Topic suggestion
               <AutoAwesome sx={{ fontSize: 16, color: '#1F2937' }} />
@@ -1000,9 +1111,7 @@ const KlippersShorts = () => {
         </Box>
       </Modal>
     </Box>
-  )
-}
+  );
+};
 
-
-// export default KlippersShortsHalil; 
-export default KlippersShorts; 
+export default KlippersShortsOld; 

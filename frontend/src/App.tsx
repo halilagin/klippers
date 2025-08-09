@@ -21,11 +21,13 @@ import Klippers from './pages/Klippers';
 import KlippersLogin from './pages/KlippersLogin';
 import KlippersPricing from './pages/KlippersPricing';
 import KlippersDashboard from './pages/KlippersDashboard';
-import KlippersShorts from './pages/KlippersShorts';
 import KlippersAccount from './pages/KlippersAccount';
 import KlippersUsage from './pages/KlippersUsage';
 import KlippersBilling from './pages/KlippersBilling';
 import KlippersPaymentForm from './pages/KlippersPaymentForm';
+import KlippersShortsOld from './pages/KlippersShortsOld';
+import KlippersShorts from './pages/KlippersShorts';
+import KlippersShortsHalil from './pages/KlippersShortsHalil';
 
 
 function App() {
@@ -53,7 +55,9 @@ function App() {
         <Route path="/klippers-login" element={<KlippersLogin />} />
         <Route path="/klippers-pricing" element={<KlippersPricing />} />
         <Route path="/klippers-dashboard" element={<KlippersDashboard />} />
+        <Route path="/klippers-shorts-old" element={<KlippersShortsOld />} />
         <Route path="/klippers-shorts" element={<KlippersShorts />} />
+        <Route path="/klippers-shorts-halil" element={<KlippersShortsHalil   />} />
         <Route path="/klippers-account" element={<KlippersAccount />} />
         <Route path="/klippers-usage" element={<KlippersUsage />} />
         <Route path="/klippers-billing" element={<KlippersBilling />} />

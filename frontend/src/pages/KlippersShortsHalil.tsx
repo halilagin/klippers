@@ -290,7 +290,7 @@ const KlippersShort = (props: KlipperShortProps) => {
 }
 
 
-const KlippersShorts = () => {
+const KlippersShortsHalil = () => {
   const location = useLocation();
   const [selectedShort, setSelectedShort] = useState(0);
   const [openPublishModal, setOpenPublishModal] = useState(false);
@@ -301,7 +301,7 @@ const KlippersShorts = () => {
   const isAccountPage = location.pathname === '/klippers-account';
   const isUsagePage = location.pathname === '/klippers-usage';
   const isBillingPage = location.pathname === '/klippers-billing';
-  const isShortsPage = location.pathname === '/klippers-shorts';
+  const isShortsPage = location.pathname === '/klippers-shorts-halil';
 
   const handlePublish = () => {
     setOpenPublishModal(true);
@@ -1004,5 +1004,5 @@ const KlippersShorts = () => {
 }
 
 
-// export default KlippersShortsHalil; 
-export default KlippersShorts; 
+
+export default KlippersShortsHalil; 
