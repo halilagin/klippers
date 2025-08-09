@@ -11,10 +11,11 @@ from app.api.v1.endpoints import subscription
 from app.api.klippers import api_chat
 from contextlib import asynccontextmanager
 import threading
-from app.db_polling.stripe_document_meters import send_document_meters_loop
+# from app.db_polling.stripe_document_meters import send_document_meters_loop
 from fastapi import FastAPI
 from app.config import settings
 from app.api.klippers import video_upload
+from app.api.klippers import user_videos
 import os
 
 
@@ -34,18 +35,19 @@ PSQL_BACKUP_INTERVAL_SECONDS = 60 * 60 * 12
 
 
 def start_background_thread():
+    pass
     # Create and start the daemon thread
 
-    if settings.ACTIVATE_STRIPE_METERING:
-        # Create and start the daemon thread
-        global strpie_doc_meter_thread
-        strpie_doc_meter_thread = threading.Thread(
-            target=send_document_meters_loop,
-            args=(STRIPE_DOCUMENT_METER_INTERVAL_SECONDS,),
-            daemon=True  # Set as daemon thread so it exits when FastAPI exits
-        )
-        strpie_doc_meter_thread.start()
-        print(f"MAIN: Background Stripe document meter thread started. Will send meters every {STRIPE_DOCUMENT_METER_INTERVAL_SECONDS} seconds.")
+    # if settings.ACTIVATE_STRIPE_METERING:
+    #     # Create and start the daemon thread
+    #     global strpie_doc_meter_thread
+    #     strpie_doc_meter_thread = threading.Thread(
+    #         target=send_document_meters_loop,
+    #         args=(STRIPE_DOCUMENT_METER_INTERVAL_SECONDS,),
+    #         daemon=True  # Set as daemon thread so it exits when FastAPI exits
+    #     )
+    #     strpie_doc_meter_thread.start()
+    #     print(f"MAIN: Background Stripe document meter thread started. Will send meters every {STRIPE_DOCUMENT_METER_INTERVAL_SECONDS} seconds.")
 
 #    if settings.ACTIVATE_PSQL_BACKUP:
 #        # Create and start the daemon thread
@@ -115,6 +117,7 @@ app.include_router(users.router, prefix="/api/v1", tags=["users"])
 app.include_router(subscription.router, prefix="/api/v1", tags=["subscription"])
 app.include_router(api_chat.router, prefix="/api/v1", tags=["chat"])
 app.include_router(video_upload.router, prefix="/api/v1", tags=["video_upload"])
+app.include_router(user_videos.router, prefix="/api/v1", tags=["user_videos"])
 
 
 @app.get("/")

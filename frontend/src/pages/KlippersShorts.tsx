@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -36,7 +36,7 @@ import InnerNavbar from '@/components/InnerNavbar';
 import PublishShortModal from '@/components/modals/PublishShortModal';
 import VideoClipSegmentsFlow from '@/components/VideoClipSegmentsFlow';
 import GenerateNewShortModal from '@/components/modals/GenerateNewShortModal';
-
+import AppConfig from '@/AppConfig';
 
 interface KlipperShortModel {
   id: number;
@@ -54,37 +54,14 @@ interface KlipperShortProps {
   onDownload: () => void;
 }
 
-const shorts: KlipperShortModel[] = [
-    {
-      id: 1,
-      title: "The importance of curiosity in learning dance (00:41)",
-      viralityScore: 85,
-      transcript: "Next one is to be curious. When I started doing tango, I was really curious into what are the different ways that I can break down a step, what are the different ways I can do this, can I do this in reverse, can I do this with the other foot, can I do this with the other side of the embrace, that kind of thing. Being curious is another aspect which I think is really, really important because you don't just copy, or you're not just copying what the teacher is showing you, you're making the dance your own. And that's what the result of being curious is, it's really making the dance your own.",
-      viralityDescription: "This video promotes a relatable and inspiring message about curiosity in dance, which can resonate with a wide audience. The personal storytelling aspect adds authenticity, and the practical tips encourage viewer engagement. However, the lack of visual elements or dynamic editing may limit its overall appeal.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/3.mp4"
-    },
-    {
-      id: 2,
-      title: "Building confidence through dance practice (00:38)",
-      viralityScore: 78,
-      transcript: "Confidence comes from practice. When you practice something over and over again, you start to feel more comfortable with it. In tango, this means practicing your steps, your posture, your connection with your partner. The more you practice, the more confident you become, and the more you can express yourself through the dance. It's not about being perfect, it's about being comfortable with who you are and what you can do.",
-      viralityDescription: "This short focuses on the universal theme of building confidence through practice, which appeals to a broad audience beyond just dancers. The message is motivational and actionable, encouraging viewers to apply the concept to their own lives. The personal experience adds credibility and relatability.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/4.mp4"
-    },
-    {
-      id: 3,
-      title: "The power of community in dance learning (00:45)",
-      viralityScore: 92,
-      transcript: "The tango community is incredible. When you're learning, everyone is so supportive. More experienced dancers are always willing to help beginners, share tips, and encourage them to keep going. This sense of community makes the learning process so much more enjoyable and less intimidating. It's not just about the dance itself, it's about the people you meet and the connections you make along the way.",
-      viralityDescription: "This video highlights the social and community aspects of dance, which can resonate with viewers who value human connection and support networks. The positive message about community support is universally appealing and can inspire viewers to seek out similar communities in their own interests.",
-      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/5.mp4"
-    }
-  ];
+
 
 
 
 const KlippersShort = (props: KlipperShortProps) => {
   const { short, onPublish, onEdit, onDownload } = props;
+  const [videoId, setVideoId] = useState("fe80098a-f9b8-4a4a-8177-e657799bb59b");
+  
 
   return (
     <Grid container spacing={8}>
@@ -413,17 +390,61 @@ const KlippersGenerateNewShortModal = () => {
 
 const KlippersShorts = () => {
   const location = useLocation();
-  const [selectedShort, setSelectedShort] = useState(0);
-  const [openPublishModal, setOpenPublishModal] = useState(false);
-  const [openGenerateModal, setOpenGenerateModal] = useState(false);
-  const [topicInput, setTopicInput] = useState('');
+  const [videoId, setVideoId] = useState("fe80098a-f9b8-4a4a-8177-e657799bb59b");
+ 
+  const [shorts, setShorts] = useState<KlipperShortModel[]>([]);
 
-  const isShortsPage = location.pathname === '/klippers-shorts';
+  let sampleShorts: KlipperShortModel[] = [
+    {
+      id: 1,
+      title: "The importance of curiosity in learning dance (00:41)",
+      viralityScore: 85,
+      transcript: "Next one is to be curious. When I started doing tango, I was really curious into what are the different ways that I can break down a step, what are the different ways I can do this, can I do this in reverse, can I do this with the other foot, can I do this with the other side of the embrace, that kind of thing. Being curious is another aspect which I think is really, really important because you don't just copy, or you're not just copying what the teacher is showing you, you're making the dance your own. And that's what the result of being curious is, it's really making the dance your own.",
+      viralityDescription: "This video promotes a relatable and inspiring message about curiosity in dance, which can resonate with a wide audience. The personal storytelling aspect adds authenticity, and the practical tips encourage viewer engagement. However, the lack of visual elements or dynamic editing may limit its overall appeal.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/3.mp4"
+    },
+    {
+      id: 2,
+      title: "Building confidence through dance practice (00:38)",
+      viralityScore: 78,
+      transcript: "Confidence comes from practice. When you practice something over and over again, you start to feel more comfortable with it. In tango, this means practicing your steps, your posture, your connection with your partner. The more you practice, the more confident you become, and the more you can express yourself through the dance. It's not about being perfect, it's about being comfortable with who you are and what you can do.",
+      viralityDescription: "This short focuses on the universal theme of building confidence through practice, which appeals to a broad audience beyond just dancers. The message is motivational and actionable, encouraging viewers to apply the concept to their own lives. The personal experience adds credibility and relatability.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/4.mp4"
+    },
+    {
+      id: 3,
+      title: "The power of community in dance learning (00:45)",
+      viralityScore: 92,
+      transcript: "The tango community is incredible. When you're learning, everyone is so supportive. More experienced dancers are always willing to help beginners, share tips, and encourage them to keep going. This sense of community makes the learning process so much more enjoyable and less intimidating. It's not just about the dance itself, it's about the people you meet and the connections you make along the way.",
+      viralityDescription: "This video highlights the social and community aspects of dance, which can resonate with viewers who value human connection and support networks. The positive message about community support is universally appealing and can inspire viewers to seek out similar communities in their own interests.",
+      previewUrl: "https://cdn.midjourney.com/video/561c9001-69c4-4f31-9d65-0861f90b4a2d/5.mp4"
+    }
+  ];
 
-  const handlePublish = () => {
-    setOpenPublishModal(true);
-  };
+  useEffect(() => {
+    const fetchShorts = async () => {
+      const response = await fetch(`${AppConfig.baseApiUrl}/api/v1/shorts/shorts/${videoId}`);
+      const videoFileNames = await response.json();
 
+      const path = `${AppConfig.baseApiUrl}/api/v1/shorts/serve/${videoFileNames[0]}`
+      let list: KlipperShortModel[] = []
+      videoFileNames.map(async (fileName: string, index: number) => {
+        const videoPath = `${AppConfig.baseApiUrl}/api/v1/shorts/shorts/serve/${videoId}/${fileName}`;
+        list.push({
+          id: index,
+          title:  sampleShorts[index].title,
+          viralityScore: sampleShorts[index].viralityScore,
+          transcript: sampleShorts[index].transcript,
+          viralityDescription: sampleShorts[index].viralityDescription, 
+          previewUrl: videoPath
+        })
+      })
+      setShorts(list);
+    };
+    fetchShorts();
+  }, [videoId]);
+
+  
   const handleEdit = () => {
     // Handle edit functionality
     console.log('Edit clicked');
