@@ -775,6 +775,8 @@ const Klippers: React.FC = () => {
                 </Typography>
               </Box>
               <Button 
+                component={RouterLink}
+                to="/klippers-trial"
                 variant="contained" 
                 startIcon={<AutoAwesome />}
                 className="button-hover-effect"

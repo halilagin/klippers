@@ -220,7 +220,7 @@ const KlippersTrial = () => {
             <Box sx={{ 
               width: 'calc(100% - 25px)', 
               height: 4, 
-              bgcolor: 'rgba(255, 255, 255, 0.08)', 
+              bgcolor: 'rgba(255, 255, 255, 0.15)', 
               borderRadius: 2,
               position: 'relative',
               overflow: 'hidden',
