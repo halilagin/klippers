@@ -6,8 +6,7 @@ interface AppConfig {
 
 const appConfig = {
     baseApiUrl: "http://localhost:23081",
-    // baseApiUrl: "https://klippersai.com",
-    baseUrl: "https://localhost:23080",
+    baseUrl: "https://localhost:3000",
     stripePublishableKey: "pk_test_51N808IGg0tCTvsYGCR2GcVwUlkPMOrhwZAIsJH4LThvJCBzcFzS6Ru6YapQlqIbhyYHZ3EhICGIRsnqoagsxYcM500dNmHSaiu",
 } as AppConfig
 

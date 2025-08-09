@@ -12,9 +12,9 @@ sqlite_list_tables:
 sqlite_sql:
 	sqlite3 app.db "$(SQL)"
 psql_reinit:
-	python app/init/dbmanager.py reinitialize
+	docker exec klippers-fastapi-app python /app/app/init/dbmanager.py reinitialize
 psql_seed:
-	python app/init/dbmanager.py seed
+	docker exec klippers-fastapi-app python /app/app/init/dbmanager.py seed
 
 test_local:
 	cp .env.local .env
