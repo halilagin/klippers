@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import LandingPage from './pages/landingpage/LandginPage';
-import Dashboard from './pages/Dashboard';
+import Dashboard from '@/pages/dashboard/Dashboard';
 import OuterLayout from './pages/_layout/OuterLayout';
 import InnerLayout from './pages/_layout/InnerLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import OuterLoginLayout from './pages/_layout/OuterLoginLayout';
+import KlippersShorts from './pages/KlippersShorts';
 
 function App() {
   return (
@@ -26,14 +27,15 @@ function App() {
 
         {/* Protected routes with InnerLayout */}
         <Route
-          path="/dashboard"
+          path="/in"
           element={
             <ProtectedRoute>
               <InnerLayout />
             </ProtectedRoute>
           }
         >
-          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="my-shorts" element={<KlippersShorts />} />
           {/* Add more protected routes here as needed */}
         </Route>
       </Routes>

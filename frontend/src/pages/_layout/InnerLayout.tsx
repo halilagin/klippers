@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import InnerNavbar from '@/components/InnerNavbar';
 
 const InnerLayout: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const InnerLayout: React.FC = () => {
         {/* Add navigation, user menu, etc. for authenticated pages */}
         <nav>
           {/* Authenticated navigation items */}
+          <InnerNavbar />
           <div>
             {/* User profile, logout, etc. */}
           </div>

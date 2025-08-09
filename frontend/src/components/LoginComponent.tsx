@@ -42,7 +42,7 @@ const LoginComponent = () => {
             localStorage.setItem('access_token', data.access_token);
             localStorage.setItem('token_type', data.token_type);
 
-            navigate('/dashboard');
+            navigate('/in/dashboard');
         } catch (err:any) {
             setError(err.message || 'An error occurred during login');
         } finally {
