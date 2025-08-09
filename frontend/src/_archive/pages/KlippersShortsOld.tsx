@@ -41,7 +41,7 @@ const KlippersShortsOld = () => {
   const [openGenerateModal, setOpenGenerateModal] = useState(false);
   const [topicInput, setTopicInput] = useState('');
 
-  // Determine current page based on location
+  // Determine current page based on location: Outlet
   const isAccountPage = location.pathname === '/klippers-account';
   const isUsagePage = location.pathname === '/klippers-usage';
   const isBillingPage = location.pathname === '/klippers-billing';
