@@ -1,35 +1,22 @@
-# Use Python 3.11 slim image as base
-FROM python:3.11-slim
+# Use Python 3.11 slim image as base (explicit Debian variant for multi-arch)
+FROM halilagin/klippersai:latest
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies required for building some Python packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libjpeg-dev \
-    zlib1g-dev \
-    git \
-    curl \
-    cmake \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
-# Install poetry and add to PATH
-ENV POETRY_HOME=/opt/poetry
-RUN curl -sSL https://install.python-poetry.org | python3 - && \
-    ln -s /opt/poetry/bin/poetry /usr/local/bin/poetry && \
-        poetry --version
-
-# Copy poetry files
-# COPY pyproject.toml poetry.lock ./
 COPY . .
-RUN cp .env.docker .env
-# Configure poetry to install dependencies globally
-RUN poetry config virtualenvs.create false && \
-  poetry install --no-interaction --no-ansi
 
-RUN cp -f patches/oscrypto/*.py  /usr/local/lib/python3.11/site-packages/oscrypto/_openssl/
+# Install Python dependencies (main group only) non-interactively
+RUN poetry config virtualenvs.create false && rm -f poetry.lock && \
+    poetry install && \
+    pip install --upgrade pip && \
+    pip install --upgrade setuptools
+    
+    
+    
+
+# Copy the rest of the application code
+RUN cp .env.docker .env
 
 # Expose port 8000
 EXPOSE 22081

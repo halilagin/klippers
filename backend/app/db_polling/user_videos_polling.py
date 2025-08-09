@@ -42,7 +42,7 @@ def run_cmd_process_video(user_id: str, video_id: str):
     try:
         os.makedirs(f"{os.getenv('VIDEO_WAREHOUSE_ROOT_DIR')}/{user_id}/{video_id}", exist_ok=True)
 
-        cmd_client_path = "run_on_uploaded_video.sh"
+        cmd_client_path = os.getenv('KLIPPERS_RUN_SCRIPT', 'run_on_uploaded_video.sh')
         command = ["/bin/bash", cmd_client_path]
         
         input_env = os.environ.copy()

@@ -1,0 +1,71 @@
+import React from 'react';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
+// import Login from '@/pages/Login';
+// import DocumentUpload from '@/pages/DocumentUpload';
+
+
+
+
+// import PrepareSignerTemplateMain from './pages/prepare_signer_template/PrepareSignerTemplateMain';
+// import Subscription from './pages/subscription';
+
+// import LandPage from './components/LandPage';
+// import ManageSubscription from './pages/profile/ManageSubscription';
+// import Settings from './pages/Settings';
+// import Profile from './pages/Profile';
+
+// import Klippers from './pages/Klippers';
+// import KlippersLogin from './pages/KlippersLogin';
+// import KlippersPricing from './pages/KlippersPricing';
+// import KlippersDashboard from './pages/KlippersDashboard';
+// import KlippersAccount from './pages/KlippersAccount';
+// import KlippersUsage from './pages/KlippersUsage';
+// import KlippersBilling from './pages/KlippersBilling';
+// import KlippersPaymentForm from './pages/KlippersPaymentForm';
+// import KlippersShortsOld from './pages/KlippersShortsOld';
+// import KlippersShorts from './pages/KlippersShorts';
+// import KlippersShortsHalil from './pages/KlippersShortsHalil';
+
+
+function App() {
+  return (
+    <>
+      
+      {/* <Router>
+        <Routes>
+        <Route path="/" element={<Klippers/>} />
+     
+      
+        <Route path="/login" element={<Login />} />
+      
+
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/subscriptions" element={<ManageSubscription />} />
+
+        
+        <Route path="/document-upload" element={<DocumentUpload />} />
+        <Route path="/prepare-sign-document" element={<PrepareSignerTemplateMain />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
+     
+        <Route path="/klippers" element={<Klippers />} />
+        <Route path="/klippers-login" element={<KlippersLogin />} />
+        <Route path="/klippers-pricing" element={<KlippersPricing />} />
+        <Route path="/klippers-dashboard" element={<KlippersDashboard />} />
+        <Route path="/klippers-shorts-old" element={<KlippersShortsOld />} />
+        <Route path="/klippers-shorts" element={<KlippersShorts />} />
+        <Route path="/klippers-shorts-halil" element={<KlippersShortsHalil   />} />
+        <Route path="/klippers-account" element={<KlippersAccount />} />
+        <Route path="/klippers-usage" element={<KlippersUsage />} />
+        <Route path="/klippers-billing" element={<KlippersBilling />} />
+        <Route path="/klippers-payment" element={<KlippersPaymentForm planId={null} planDetails={null} />} />
+      </Routes>
+    </Router> */}
+    </>
+  );
+}
+
+export default App;

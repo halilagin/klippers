@@ -10,6 +10,8 @@ services:
       - "23081:22081"
     volumes:
       - ./backend:/app
+    env_file:
+      - ./backend/.env.docker
     environment:
       - PYTHONPATH=/app
       - DATABASE_URL=postgresql://qsignuser:qsign_qazwsxqazwsx@klippers-postgres-db:5432/qsign_test

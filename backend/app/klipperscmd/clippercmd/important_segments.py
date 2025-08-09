@@ -7,7 +7,7 @@ def _generate_important_segments(
     input_srt, output_file, segment_count, settings
 ):
     """Generates important segments from an SRT file using OpenAI API."""
-    client = openai.OpenAI(api_key=settings.openai_api_key)
+    client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
     try:
         with open(input_srt, 'r', encoding='utf-8') as f:

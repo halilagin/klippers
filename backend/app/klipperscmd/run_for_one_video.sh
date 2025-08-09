@@ -4,6 +4,13 @@
 INPUT_VIDEO=${1:-"podcast01.mp4"}
 SEGMENT_COUNT=${2:-10}
 
+# Resolve Python executor (prefer Poetry-managed env if available)
+if command -v poetry >/dev/null 2>&1; then
+    PYTHON_CMD="poetry run python"
+else
+    PYTHON_CMD="python"
+fi
+
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -59,44 +66,44 @@ echo "Running all steps in $ROOT_DIR"
 
 # Extract audio
 # echo "========== Extract audio =========="
-# python clipper.py extract-audio --video-file "$INPUT_VIDEO" --audio-file "$AUDIO_FILE"
+$PYTHON_CMD clipper.py extract-audio --video-file "$INPUT_VIDEO" --audio-file "$AUDIO_FILE"
 
 
 # Transcribe
-# echo "========== Transcribe =========="
-# python clipper.py transcribe --audio-file "$AUDIO_FILE" --output-srt-file "$SRT_FILE"
+# # echo "========== Transcribe =========="
+# $PYTHON_CMD clipper.py transcribe --audio-file "$AUDIO_FILE" --output-srt-file "$SRT_FILE"
 
 
-# Convert SRT to TXT
-# echo "========== Convert SRT to TXT =========="
-# python clipper.py convert-srt-to-txt --srt-file "$SRT_FILE" --txt-file "$TXT_FILE"
+# # Convert SRT to TXT
+# # echo "========== Convert SRT to TXT =========="
+# $PYTHON_CMD clipper.py convert-srt-to-txt --srt-file "$SRT_FILE" --txt-file "$TXT_FILE"
 
 # # Important segments
 # echo "========== Important segments =========="
-# python clipper.py important-segments --input-srt "$SRT_FILE" --output-file "$IMPORTANT_SEGMENTS_JSON_FILE" --segment-count "$SEGMENT_COUNT"
+# $PYTHON_CMD clipper.py important-segments --input-srt "$SRT_FILE" --output-file "$IMPORTANT_SEGMENTS_JSON_FILE" --segment-count "$SEGMENT_COUNT"
 
 # Process
 # echo "========== Extract Video Segments =========="
-# python clipper.py extract-video-segments --input-video "$INPUT_VIDEO" --important-segments-file-json "$IMPORTANT_SEGMENTS_JSON_FILE" --output-dir "$IMPORTANT_SEGMENTS_VIDEO_DIR" --srt-file "$SRT_FILE"
+# $PYTHON_CMD clipper.py extract-video-segments --input-video "$INPUT_VIDEO" --important-segments-file-json "$IMPORTANT_SEGMENTS_JSON_FILE" --output-dir "$IMPORTANT_SEGMENTS_VIDEO_DIR" --srt-file "$SRT_FILE"
 
 
 # echo "========== Crop and Stack Videos =========="
 
-# python clipper.py crop-and-stack --input-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/segment_1.mp4" --output-video-path "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4"
+# $PYTHON_CMD clipper.py crop-and-stack --input-video-path "$IMPORTANT_SEGMENTS_VIDEO_DIR/segment_1.mp4" --output-video-path "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4"
 
 # echo "========== Embed Subtitles in Stacked Video =========="
 
 
 # Extract audio and transcribe for the cropped videos
-# python clipper.py extract-audio --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3"
+# $PYTHON_CMD clipper.py extract-audio --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3"
 
-# python clipper.py transcribe-word-level-ass --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3" --output-ass-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --words-per-subtitle 4
-
-
-# python debug_ass_file.py "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass"
+# $PYTHON_CMD clipper.py transcribe-word-level-ass --audio-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp3" --output-ass-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --words-per-subtitle 4
 
 
-# python clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_with_subtitles.mp4" --position-middle
+# $PYTHON_CMD debug_ass_file.py "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass"
+
+
+# $PYTHON_CMD clipper.py embed-subtitles --video-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.mp4" --srt-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1.ass" --output-file "$VIDEOS_CROPPED_STACKED_DIR/segment_1_with_subtitles.mp4" --position-middle
 
 # echo "All steps completed successfully!"
 # echo "Output directory: $ROOT_DIR" 

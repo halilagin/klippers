@@ -28,4 +28,4 @@ def _extract_audio(video_file, audio_file):
 )
 def extract_audio_command(video_file, audio_file):
     """Extracts audio from a video file into an MP3."""
-    _extract_audio(video_file, audio_file) 
+    _extract_audio(video_file, audio_file)

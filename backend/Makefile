@@ -37,3 +37,8 @@ upload_video:
 		  -F "file=@app/klipperscmd/podcast01.mp4;type=video/mp4" \
 			  -F "user_id=user123"\
 				  --no-buffer
+upload_video_docker:
+	@curl -X POST "http://localhost:23081/api/v1/videoupload/upload" \
+		  -F "file=@app/klipperscmd/podcast01.mp4;type=video/mp4" \
+			  -F "user_id=user123"\
+				  --no-buffer
